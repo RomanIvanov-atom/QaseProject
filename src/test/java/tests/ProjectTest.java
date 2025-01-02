@@ -9,6 +9,5 @@ public class ProjectTest extends BaseTest {
     @Test
     public void createProjectTest() {
         driver.get("https://app.qase.io/projects");
-        AllureUtils.takeScreenshot(driver);
     }
 }
