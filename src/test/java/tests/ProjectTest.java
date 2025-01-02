@@ -2,7 +2,6 @@ package tests;
 
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
-import utils.AllureUtils;
 
 public class ProjectTest extends BaseTest {
 

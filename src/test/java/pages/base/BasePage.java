@@ -11,6 +11,7 @@ import java.lang.reflect.Field;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Log4j2
 public abstract class BasePage {
@@ -75,7 +76,7 @@ public abstract class BasePage {
     public void waitForDOMLoaded() {
         try {
             new WebDriverWait(driver, Duration.ofSeconds(short_timeout)).until(
-                    (ExpectedCondition<Boolean>) driver -> Boolean.valueOf(((JavascriptExecutor) driver)
+                    (ExpectedCondition<Boolean>) driver -> Boolean.valueOf(((JavascriptExecutor) Objects.requireNonNull(driver))
                             .executeScript("return window.performance.timing.loadEventEnd === 0").toString()));
         } catch (Exception ex) {
             // ignore
