@@ -19,10 +19,10 @@ public class LoginPageTest extends BaseTest {
 
     @Test
     public void testLoginWithAValidUsernameAndPassword() throws Exception {
-       log.info("Precondition. Navigate to login page as a non-logged user");
+        log.info("Precondition. Navigate to login page as a non-logged user");
         LoginPage loginPage = new LoginPage(driver);
 
-        log.info("1. Fill the User Field and the Password field with valid data then click on 'Login' button");
+        log.info("Step 1. Fill the User Field and the Password field with valid data then click on 'Login' button");
         loginPage
                 .fillUserName(Constants.USERNAME)
                 .fillPassword(Constants.PASSWORD)

@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
 import java.time.Duration;
 
 @Log4j2
-public class BaseTest {
+public abstract class BaseTest {
 
     protected WebDriver driver;
 
