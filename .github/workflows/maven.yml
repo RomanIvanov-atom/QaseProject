@@ -15,9 +15,9 @@ on:
     branches: [ "main" ]
 
 env:
-  USERNAME: {{secrets.USERNAME_FOR_GITHUB}}
-  PASSWORD: {{secrets.PASSWORD_FOR_GITHUB}}
-  API_TOKEN: {{secrets.API_TOKEN_FOR_GITHUB}}
+  USERNAME: ${{secrets.USERNAME_FOR_GITHUB}}
+  PASSWORD: ${{secrets.PASSWORD_FOR_GITHUB}}
+  API_TOKEN: ${{secrets.API_TOKEN_FOR_GITHUB}}
 
 jobs:
   build:
