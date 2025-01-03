@@ -8,6 +8,7 @@ public final class PropertyReader {
     private static String propertiesPath = "/config.properties";
     private static volatile Properties properties;
     private static InputStream inputStream;
+    private static final String env = System.getProperty("ENV", "local");
 
     private PropertyReader() {
     }
@@ -18,9 +19,15 @@ public final class PropertyReader {
         return propertiesPath;
     }
 
-    public static Properties readProperties() {
+    public static Properties readProperties(String env) {
         properties = new Properties();
         try {
+            if ("ci".equalsIgnoreCase(env)) {
+                propertiesPath = "/config.properties.TEMPLATE";
+            } else {
+                propertiesPath = "/config.properties";
+            }
+
             inputStream = PropertyReader.class.getResourceAsStream(getCorrectPath());
             if (inputStream != null)
                 properties.load(inputStream);
@@ -41,15 +48,15 @@ public final class PropertyReader {
     }
 
     private static Properties loadProperties() {
-        return properties != null ? properties : readProperties();
+        return properties != null ? properties : readProperties(env);
     }
 
     public static Properties getProperties(String path) {
         propertiesPath = path;
-        return readProperties();
+        return readProperties(env);
     }
 
     public static String getProperty(String propertyName) {
-        return loadProperties().getProperty(propertyName);
+        return readProperties(env).getProperty(propertyName);
     }
 }
