@@ -1,4 +1,4 @@
-package utils;
+package utils.allure;
 
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;

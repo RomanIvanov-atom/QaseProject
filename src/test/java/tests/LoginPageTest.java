@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.ProjectsPage;
 import tests.base.BaseTest;
-import utils.Constants;
+import utils.constants.Constants;
 
 @Log4j2
 public class LoginPageTest extends BaseTest {

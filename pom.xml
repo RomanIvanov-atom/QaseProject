@@ -22,7 +22,7 @@
         <jackson.dataformat.yaml.version>2.18.2</jackson.dataformat.yaml.version>
         <lombok.version>1.18.36</lombok.version>
         <apache.commons.version>3.17.0</apache.commons.version>
-        <suiteXmlFile>src/test/resources/suite.xml</suiteXmlFile>
+        <suiteXmlFile>src/test/resources/MainSuite.xml</suiteXmlFile>
     </properties>
 
     <dependencyManagement>
