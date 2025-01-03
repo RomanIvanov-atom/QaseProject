@@ -15,6 +15,7 @@ on:
     branches: [ "main" ]
 
 env:
+  ENV: ci
   USERNAME: ${{secrets.USERNAME_FOR_GITHUB}}
   PASSWORD: ${{secrets.PASSWORD_FOR_GITHUB}}
   API_TOKEN: ${{secrets.API_TOKEN_FOR_GITHUB}}
