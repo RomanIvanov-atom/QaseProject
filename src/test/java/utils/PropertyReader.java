@@ -1,9 +1,12 @@
 package utils;
 
+import lombok.extern.log4j.Log4j2;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+@Log4j2
 public final class PropertyReader {
     private static String propertiesPath = "/config.properties";
     private static volatile Properties properties;
@@ -24,8 +27,10 @@ public final class PropertyReader {
         try {
             if ("ci".equalsIgnoreCase(env)) {
                 propertiesPath = "/config.properties.TEMPLATE";
+                log.info("!!!LOG!!! Сработал config.properties.TEMPLATE");
             } else {
                 propertiesPath = "/config.properties";
+                log.info("!!!LOG!!! Сработал config.properties");
             }
 
             inputStream = PropertyReader.class.getResourceAsStream(getCorrectPath());
