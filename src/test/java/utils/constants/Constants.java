@@ -5,11 +5,11 @@ import utils.PropertyReader;
 public class Constants {
 
     // Login - constants
-    public static final String USERNAME = System.getProperty("username", PropertyReader.getProperty("username"));
-    public static final String PASSWORD = System.getProperty("password", PropertyReader.getProperty("password"));
+    public static final String USERNAME = PropertyReader.getProperty("username");
+    public static final String PASSWORD = PropertyReader.getProperty("password");
 
     // QASE - urls
-    public static final String BASE_API_URL = System.getProperty("apitoken", PropertyReader.getProperty("qase.base.api.url"));
+    public static final String BASE_API_URL = PropertyReader.getProperty("qase.base.api.url");
     public static final String API_TOKEN = PropertyReader.getProperty("qase.api.token");
 
 
