@@ -8,15 +8,14 @@ import org.openqa.selenium.chromium.ChromiumOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.testng.SkipException;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
+import utils.listeners.TestListener;
 
 import java.lang.reflect.Method;
 import java.time.Duration;
 
 @Log4j2
+@Listeners(TestListener.class)
 public abstract class BaseTest {
 
     protected WebDriver driver;
@@ -38,6 +37,8 @@ public abstract class BaseTest {
                 setArgumentsForHeadless(options);
             }
             driver = new EdgeDriver(options);
+        } else {
+            log.error("Parameter 'browser' wasn't found");
         }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
