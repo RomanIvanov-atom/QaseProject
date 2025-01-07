@@ -32,6 +32,10 @@ public class LoginPage extends BasePage {
         }
     }
 
+    public boolean isPageLoaded() {
+        return isVisible(LOGIN_BUTTON);
+    }
+
     public LoginPage fillUserName(String value) throws Exception {
         sendKeys(USERNAME_INPUT, value);
         return this;
