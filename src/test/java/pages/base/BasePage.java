@@ -75,7 +75,7 @@ public abstract class BasePage {
      */
     public void waitForDOMLoaded() {
         try {
-            new WebDriverWait(driver, Duration.ofSeconds(short_timeout)).until(
+            new WebDriverWait(driver, Duration.ofSeconds(timeout)).until(
                     (ExpectedCondition<Boolean>) driver -> Boolean.valueOf(((JavascriptExecutor) Objects.requireNonNull(driver))
                             .executeScript("return window.performance.timing.loadEventEnd === 0").toString()));
         } catch (Exception ex) {
