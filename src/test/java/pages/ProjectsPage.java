@@ -1,8 +1,10 @@
 package pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import pages.base.BasePage;
 
+@Log4j2
 public class ProjectsPage extends BasePage {
 
     public ProjectsPage(WebDriver driver) {
@@ -30,6 +32,7 @@ public class ProjectsPage extends BasePage {
     }
 
     public boolean isPageLoaded() {
+        log.info("!!!LOG FOR CATCH A BUG. Trying to check if 'CREATE_NEW_PROJECT_BUTTON' is Visible");
         return isVisible(CREATE_NEW_PROJECT_BUTTON);
     }
 }

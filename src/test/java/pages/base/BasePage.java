@@ -110,7 +110,7 @@ public abstract class BasePage {
     }
 
     public boolean isVisible(String xpath) {
-        return isVisible(xpath, 0, short_timeout);
+        return isVisible(xpath, 0, timeout);
     }
 
     /**
