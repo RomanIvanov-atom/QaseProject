@@ -25,10 +25,12 @@ public class ProjectsPage extends BasePage {
 
     protected void pageLoading() {
         try {
+            log.info("!!!DEBUG LOG. TRY TO CHECK IF PAGE LOADED");
             if (!(isVisible(CREATE_NEW_PROJECT_BUTTON, 0, long_timeout))) throw new Exception();
         } catch (Exception ex) {
             throw new AssertionError("Login Page was not loaded");
         }
+        log.info("!!!DEBUG LOG. OK! Page 'ProjectsPage' is loaded");
     }
 
     public boolean isPageLoaded() {
