@@ -24,6 +24,7 @@ public final class PropertyReader {
 
     public static Properties readProperties(String env) {
         properties = new Properties();
+        log.info("!!!DEBUGLOG. In fact env = " + env);
         try {
             if ("ci".equalsIgnoreCase(env)) {
                 propertiesPath = "/config.properties.TEMPLATE";
