@@ -6,9 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import static utils.constants.Constants.PASSWORD;
-import static utils.constants.Constants.USERNAME;
-
 @Log4j2
 public final class PropertyReader {
     private static String propertiesPath = "/config.properties";
@@ -32,8 +29,6 @@ public final class PropertyReader {
             if ("ci".equalsIgnoreCase(env)) {
                 propertiesPath = "/config.properties.TEMPLATE";
                 log.info("!!!LOG!!! Сработал config.properties.TEMPLATE");
-                log.info("login is: " + USERNAME);
-                log.info("pass is: " + PASSWORD);
             } else {
                 propertiesPath = "/config.properties";
                 log.info("!!!LOG!!! Сработал config.properties");
