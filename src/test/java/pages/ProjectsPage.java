@@ -27,7 +27,7 @@ public class ProjectsPage extends BasePage {
         try {
             if (!(isVisible(CREATE_NEW_PROJECT_BUTTON, 0, long_timeout))) throw new Exception();
         } catch (Exception ex) {
-            throw new AssertionError("Login Page was not loaded");
+            throw new AssertionError("Projects Page was not loaded");
         }
     }
 
