@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.chromium.ChromiumOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.testng.ITestContext;
 import org.testng.SkipException;
 import org.testng.annotations.*;
 import utils.listeners.TestListener;
@@ -22,7 +23,7 @@ public abstract class BaseTest {
 
     @Parameters({"browser"})
     @BeforeMethod
-    public void setup(@Optional("chrome") String browser) {
+    public void setup(@Optional("chrome") String browser, ITestContext context) {
         if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("start-maximized");
@@ -42,6 +43,7 @@ public abstract class BaseTest {
         }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        context.setAttribute("driver", driver);
     }
 
     private <T extends ChromiumOptions<T>> void setArgumentsForHeadless(T options) {
