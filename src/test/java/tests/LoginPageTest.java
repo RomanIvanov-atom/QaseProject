@@ -27,10 +27,8 @@ public class LoginPageTest extends BaseTest {
                 .fillUserName(Constants.USERNAME)
                 .fillPassword(Constants.PASSWORD)
                 .clickLoginButton();
-        log.info("isPageLoaded on Login Page passed well, so 'isVisible' method is without problems");
         log.info("Attempt to confirm User logs in and is directed to the Projects Page");
         ProjectsPage projectsPage = new ProjectsPage(driver);
-        log.info("!!!LOG FOR CATCH A BUG. Trying to check if if happens AFTER constructor?");
         Assert.assertTrue(projectsPage.isPageLoaded(), "Project Page was not loaded");
     }
 }
