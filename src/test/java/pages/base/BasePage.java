@@ -75,7 +75,7 @@ public abstract class BasePage {
      */
     public void waitForDOMLoaded() {
         try {
-            new WebDriverWait(driver, Duration.ofSeconds(short_timeout)).until(
+            new WebDriverWait(driver, Duration.ofSeconds(timeout)).until(
                     (ExpectedCondition<Boolean>) driver -> Boolean.valueOf(((JavascriptExecutor) Objects.requireNonNull(driver))
                             .executeScript("return window.performance.timing.loadEventEnd === 0").toString()));
         } catch (Exception ex) {
@@ -110,7 +110,7 @@ public abstract class BasePage {
     }
 
     public boolean isVisible(String xpath) {
-        return isVisible(xpath, 0, short_timeout);
+        return isVisible(xpath, 0, timeout);
     }
 
     /**

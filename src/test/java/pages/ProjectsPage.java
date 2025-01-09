@@ -1,8 +1,10 @@
 package pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import pages.base.BasePage;
 
+@Log4j2
 public class ProjectsPage extends BasePage {
 
     public ProjectsPage(WebDriver driver) {
@@ -25,7 +27,7 @@ public class ProjectsPage extends BasePage {
         try {
             if (!(isVisible(CREATE_NEW_PROJECT_BUTTON, 0, long_timeout))) throw new Exception();
         } catch (Exception ex) {
-            throw new AssertionError("Login Page was not loaded");
+            throw new AssertionError("Projects Page was not loaded");
         }
     }
 

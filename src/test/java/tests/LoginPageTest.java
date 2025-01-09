@@ -25,11 +25,10 @@ public class LoginPageTest extends BaseTest {
         log.info("Step 1. Fill the User Field and the Password field with valid data then click on 'Login' button");
         loginPage
                 .fillUserName(Constants.USERNAME)
-                .fillPassword(Constants.PASSWORD)
+                .fillPassword(Constants.PASSWORD + "TEST FAIL POSTFIX")
                 .clickLoginButton();
-
         log.info("Attempt to confirm User logs in and is directed to the Projects Page");
         ProjectsPage projectsPage = new ProjectsPage(driver);
-        Assert.assertTrue(projectsPage.isPageLoaded());
+        Assert.assertTrue(projectsPage.isPageLoaded(), "Project Page was not loaded");
     }
 }
