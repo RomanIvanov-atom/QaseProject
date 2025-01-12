@@ -82,9 +82,9 @@ public abstract class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     protected void tearDown(ITestResult result) {
-        if (ITestResult.FAILURE == result.getStatus()) {
-            takeScreenshot(driver);
-        }
+//        if (ITestResult.FAILURE == result.getStatus()) {
+//            takeScreenshot(driver);
+//        }
         if (driver != null) {
             try {
                 driver.quit();
