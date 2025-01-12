@@ -36,21 +36,21 @@ public class LoginPage extends BasePage {
         return isVisible(LOGIN_BUTTON);
     }
 
-    public LoginPage fillUserName(String value) throws Exception {
+    public LoginPage fillUserName(String value) {
         sendKeys(USERNAME_INPUT, value);
         return this;
     }
 
-    public LoginPage fillPassword(String value) throws Exception {
+    public LoginPage fillPassword(String value) {
         sendKeys(PASSWORD_INPUT, value);
         return this;
     }
 
-    public void clickLoginButton() throws Exception {
+    public void clickLoginButton() {
         click(LOGIN_BUTTON);
     }
 
-    public void doLogin(String login, String password) throws Exception {
+    public void doLogin(String login, String password) {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.fillUserName(login)
                 .fillPassword(password);
