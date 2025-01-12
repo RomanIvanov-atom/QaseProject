@@ -81,16 +81,12 @@ public abstract class BaseTest {
 //    }
 
     @AfterMethod(alwaysRun = true)
-    protected void tearDown(ITestResult result) {
-//        if (ITestResult.FAILURE == result.getStatus()) {
-//            takeScreenshot(driver);
-//        }
+    protected void tearDown() {
         if (driver != null) {
             try {
                 driver.quit();
             } catch (Exception ex) {
                 log.error("After method was failed: " + ex.getMessage());
-                throw new SkipException(ex.getMessage());
             }
         }
     }
