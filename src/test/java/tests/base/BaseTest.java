@@ -8,8 +8,6 @@ import org.openqa.selenium.chromium.ChromiumOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.testng.ITestContext;
-import org.testng.ITestResult;
-import org.testng.SkipException;
 import org.testng.annotations.*;
 import utils.listeners.TestListener;
 
