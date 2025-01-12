@@ -13,8 +13,6 @@ import utils.listeners.TestListener;
 
 import java.time.Duration;
 
-import static utils.allure.AllureUtils.takeScreenshot;
-
 @Log4j2
 @Listeners(TestListener.class)
 public abstract class BaseTest {
