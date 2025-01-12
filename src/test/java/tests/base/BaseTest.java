@@ -8,11 +8,9 @@ import org.openqa.selenium.chromium.ChromiumOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.testng.ITestContext;
-import org.testng.SkipException;
 import org.testng.annotations.*;
 import utils.listeners.TestListener;
 
-import java.lang.reflect.Method;
 import java.time.Duration;
 
 @Log4j2
@@ -79,12 +77,13 @@ public abstract class BaseTest {
 //    }
 
     @AfterMethod(alwaysRun = true)
-    protected void environmentConfiguratorAfterMethod(Method method) {
-        try {
-            driver.quit();
-        } catch (Exception ex) {
-            log.error("After method was failed: " + ex.getMessage());
-            throw new SkipException(ex.getMessage());
+    protected void tearDown() {
+        if (driver != null) {
+            try {
+                driver.quit();
+            } catch (Exception ex) {
+                log.error("After method was failed: " + ex.getMessage());
+            }
         }
     }
 }

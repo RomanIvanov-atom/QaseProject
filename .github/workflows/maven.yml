@@ -10,9 +10,10 @@ name: Test runner
 
 on:
   push:
-    branches: [ "*" ]
+    branches-ignore: []
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 env:
   ENV: ci

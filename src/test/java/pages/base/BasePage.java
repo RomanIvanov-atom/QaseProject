@@ -253,7 +253,7 @@ public abstract class BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(path));
     }
 
-    protected void waitUntilElementIsInvisible(By path, int seconds) {
+    private void waitUntilElementIsInvisible(By path, int seconds) {
         try {
             setImplicitWait(driver, 0);
             WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(seconds));
