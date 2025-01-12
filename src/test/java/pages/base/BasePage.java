@@ -116,94 +116,97 @@ public abstract class BasePage {
     /**
      * Return web element text
      */
-    public String getText(String xpath, int index, int timeout) throws Exception {
+    public String getText(String xpath, int index, int timeout) {
         try {
             WebElement webElement = getWebElement(xpath, timeout);
             return webElement.getText();
         } catch (Exception ex) {
-            throw new Exception("Unable to get text from element '" + getXpathName(xpath) + "' with index " + index
+            log.error("Unable to get text from element '" + getXpathName(xpath) + "' with index " + index
                     + " using xpath [" + xpath + "] in " + timeout + " seconds. Reason is: " + ex.getMessage());
+            return "Error occured";
         }
     }
 
-    public String getText(String xpath, int index) throws Exception {
+    public String getText(String xpath, int index) {
         return getText(xpath, index, short_timeout);
     }
 
-    public String getText(String xpath) throws Exception {
+    public String getText(String xpath) {
         return getText(xpath, 0, short_timeout);
     }
 
     /**
      * Get attribute of element
      */
-    public String getAttribute(String xpath, int index, String attribute, int timeout) throws Exception {
+    public String getAttribute(String xpath, int index, String attribute, int timeout) {
         try {
             WebElement webElement = getWebElement(xpath, timeout);
             return webElement.getAttribute(attribute);
         } catch (Exception ex) {
-            throw new Exception("Unable to get attribute [" + attribute + "] from element '" + getXpathName(xpath)
+            log.error("Unable to get attribute [" + attribute + "] from element '" + getXpathName(xpath)
                     + "' using xpath [" + xpath + "] with index [" + index + "] in " + timeout + " seconds.");
+            return "Error occured";
         }
     }
 
-    public String getAttribute(String xpath, int index, String attribute) throws Exception {
+    public String getAttribute(String xpath, int index, String attribute) {
         return getAttribute(xpath, index, attribute, short_timeout);
     }
 
-    public String getAttribute(String xpath, String attribute, int timeout) throws Exception {
+    public String getAttribute(String xpath, String attribute, int timeout) {
         return getAttribute(xpath, 0, attribute, timeout);
     }
 
     /**
      * Return input web element value
      */
-    public String getInputValue(String xpath, int index, int timeout) throws Exception {
+    public String getInputValue(String xpath, int index, int timeout) {
         try {
             String value = getText(xpath, index, timeout);
             if (value.isEmpty())
                 value = getAttribute(xpath, index, "value", timeout);
             return value;
         } catch (Exception ex) {
-            throw new Exception("Unable to get text from input '" + getXpathName(xpath)
+            log.error("Unable to get text from input '" + getXpathName(xpath)
                     + "' using xpath [" + xpath + "] with index [" + index + "] in " + timeout + " seconds.");
+            return "Error occured";
         }
     }
 
-    public String getInputValue(String xpath, int index) throws Exception {
+    public String getInputValue(String xpath, int index) {
         return getInputValue(xpath, index, short_timeout);
     }
 
-    public String getInputValue(String xpath) throws Exception {
+    public String getInputValue(String xpath) {
         return getInputValue(xpath, 0, short_timeout);
     }
 
     /**
      * Clear input element
      */
-    public void clearInput(String xpath, int index, int timeout) throws Exception {
+    public void clearInput(String xpath, int index, int timeout) {
         try {
             String chars = getInputValue(xpath, index, timeout);
             String backSpaceKeys = StringUtils.repeat(String.valueOf(Keys.BACK_SPACE), chars.length());
             sendKeys(xpath, index, backSpaceKeys, false, timeout);
         } catch (Exception ex) {
-            throw new Exception("Unable to clear input '" + getXpathName(xpath)
+            log.error("Unable to clear input '" + getXpathName(xpath)
                     + "' using xpath [" + xpath + "] with index [" + index + "] in " + timeout + " seconds. Reason: " + ex.getMessage());
         }
     }
 
-    public void clearInput(String xpath, int index) throws Exception {
+    public void clearInput(String xpath, int index) {
         clearInput(xpath, index, short_timeout);
     }
 
-    public void clearInput(String xpath) throws Exception {
+    public void clearInput(String xpath) {
         clearInput(xpath, 0, short_timeout);
     }
 
     /**
      * Send keys element
      */
-    public synchronized void sendKeys(String xpath, int index, String value, boolean clearBefore, int timeout) throws Exception {
+    public synchronized void sendKeys(String xpath, int index, String value, boolean clearBefore, int timeout) {
         try {
             if (timeout > 0) {
                 waitForVisibility(xpath, index, timeout);
@@ -218,16 +221,16 @@ public abstract class BasePage {
                 Thread.sleep(50);
             }
         } catch (Exception ex) {
-            throw new Exception("Unable to fill input '" + getXpathName(xpath) + "' with index " + index
+            log.error("Unable to fill input '" + getXpathName(xpath) + "' with index " + index
                     + " using xpath [" + xpath + "] in " + timeout + " seconds. Reason: " + ex.getMessage());
         }
     }
 
-    public void sendKeys(String xpath, int index, String value) throws Exception {
+    public void sendKeys(String xpath, int index, String value) {
         sendKeys(xpath, index, value, true, short_timeout);
     }
 
-    public void sendKeys(String xpath, String value) throws Exception {
+    public void sendKeys(String xpath, String value) {
         sendKeys(xpath, 0, value, true, short_timeout);
     }
 
@@ -289,7 +292,7 @@ public abstract class BasePage {
     /**
      * Element centering
      */
-    public synchronized void scrollTo(String xpath, int index, int timeout) throws Exception {
+    public synchronized void scrollTo(String xpath, int index, int timeout) {
         try {
             WebElement we;
             try {
@@ -301,16 +304,16 @@ public abstract class BasePage {
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", we);
             Thread.sleep(250);
         } catch (Exception ex) {
-            throw new Exception("Unable to scroll to element '" + getXpathName(xpath)
+            log.error("Unable to scroll to element '" + getXpathName(xpath)
                     + "' using xpath [" + xpath + "] with index [" + index + "] in " + timeout + " seconds.");
         }
     }
 
-    public void scrollTo(String xpath, int index) throws Exception {
+    public void scrollTo(String xpath, int index) {
         scrollTo(xpath, index, short_timeout);
     }
 
-    public void scrollTo(String xpath) throws Exception {
+    public void scrollTo(String xpath) {
         scrollTo(xpath, 0, short_timeout);
     }
 
@@ -394,22 +397,22 @@ public abstract class BasePage {
     /**
      * Click on web element
      */
-    public void click(String xpath, int index, int timeout) throws Exception {
+    public void click(String xpath, int index, int timeout) {
         try {
             WebElement webElement = getWebElement(xpath, timeout);
             scrollTo(xpath, index, timeout);
             webElement.click();
         } catch (Exception ex) {
-            throw new Exception("Unable to click on element '" + getXpathName(xpath)
+            log.error("Unable to click on element '" + getXpathName(xpath)
                     + "' using xpath [" + xpath + "] with index [" + index + "] in " + timeout + " seconds.");
         }
     }
 
-    public void click(String xpath, int index) throws Exception {
+    public void click(String xpath, int index) {
         click(xpath, index, short_timeout);
     }
 
-    public void click(String xpath) throws Exception {
+    public void click(String xpath) {
         click(xpath, 0, short_timeout);
     }
 }
