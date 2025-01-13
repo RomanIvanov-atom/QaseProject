@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Projects page">
-    <test name="#1 dont work git actions :( ">
+    <test name="#5 Test create project">
         <classes>
-            <class name="tests.ProjectsTest">
+            <class name="tests.ProjectsPageTest">
                 <methods>
                     <include name="createProjectTest"/>
                 </methods>
