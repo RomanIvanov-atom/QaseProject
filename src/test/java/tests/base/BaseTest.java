@@ -1,6 +1,6 @@
 package tests.base;
 
-import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,7 +26,7 @@ public abstract class BaseTest {
 
     @Parameters({"browser"})
     @BeforeMethod
-    @Description("Open browser")
+    @Step("Open browser")
     public void setup(@Optional("chrome") String browser, ITestContext context) {
         if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
@@ -52,7 +52,7 @@ public abstract class BaseTest {
 
 
     @BeforeMethod(dependsOnMethods = {"setup", "openPage"})
-    @Description("Doing login as precondition")
+    @Step("Doing login as precondition")
     protected void executePreconditions(Method method) {
         try {
             if (!method.isAnnotationPresent(Login.class) || method.getAnnotation(Login.class).doLogIn()) {
@@ -85,7 +85,7 @@ public abstract class BaseTest {
     }
 
     @AfterMethod(alwaysRun = true)
-    @Description("Close browser")
+    @Step("Close browser")
     protected void tearDown() {
         if (driver != null) {
             try {

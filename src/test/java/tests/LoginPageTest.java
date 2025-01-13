@@ -1,6 +1,6 @@
 package tests;
 
-import io.qameta.allure.Description;
+import io.qameta.allure.*;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -17,12 +17,13 @@ import static org.testng.Assert.assertTrue;
 public class LoginPageTest extends BaseTest {
 
     @BeforeMethod
-    @Description("Open Login Page")
+    @Step("Open Login Page")
     public void openPage() {
         driver.get(Constants.LOGIN_BASE_URL);
     }
 
     @Test(testName = "#1 Test Login with a valid username and password")
+    @Description("#1 Test Login with a valid username and password")
     @Login(doLogIn = false)
     public void testLoginWithAValidUsernameAndPassword() {
         LoginPage loginPage = new LoginPage(driver);
@@ -35,6 +36,7 @@ public class LoginPageTest extends BaseTest {
     }
 
     @Test(testName = "#2 Test Login with a valid username and invalid password")
+    @Description("#2 Test Login with a valid username and invalid password")
     @Login(doLogIn = false)
     public void testLoginWithAValidUsernameAndInvalidPassword() {
         String incorrectPassword = DataGenerator.generateRandomAlphaNumericString(10);
@@ -48,6 +50,7 @@ public class LoginPageTest extends BaseTest {
     }
 
     @Test(testName = "#3 Test Login with invalid username and valid password")
+    @Description("#3 Test Login with invalid username and valid password")
     @Login(doLogIn = false)
     public void testLoginWithInvalidUsernameAndValidPassword() {
         String incorrectUsername = DataGenerator.generateRandomAlphaNumericString(6) + "@gmail.com";
@@ -61,6 +64,7 @@ public class LoginPageTest extends BaseTest {
     }
 
     @Test(testName = "#4 Test Login with invalid username and invalid password")
+    @Description("#4 Test Login with invalid username and invalid password")
     @Login(doLogIn = false)
     public void testLoginWithInvalidUsernameAndInvalidPassword() {
         String incorrectPassword = DataGenerator.generateRandomAlphaNumericString(10);
