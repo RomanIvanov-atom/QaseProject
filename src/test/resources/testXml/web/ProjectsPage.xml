@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Projects page">
+    <test name="#1 dont work git actions :( ">
+        <classes>
+            <class name="tests.ProjectsTest">
+                <methods>
+                    <include name="createProjectTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

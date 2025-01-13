@@ -9,8 +9,12 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
+import pages.LoginPage;
+import tests.base.annotations.Login;
+import utils.constants.Constants;
 import utils.listeners.TestListener;
 
+import java.lang.reflect.Method;
 import java.time.Duration;
 
 @Log4j2
@@ -44,6 +48,29 @@ public abstract class BaseTest {
         context.setAttribute("driver", driver);
     }
 
+
+    @BeforeMethod(dependsOnMethods = {"setup", "openPage"})
+    protected void executePreconditions(Method method) {
+        try {
+            if (!method.isAnnotationPresent(Login.class) || method.getAnnotation(Login.class).doLogIn()) {
+                String username = Constants.USERNAME;
+                String password = Constants.PASSWORD;
+                if (method.isAnnotationPresent(Login.class)) {
+                    Login la = method.getAnnotation(Login.class);
+                    if (!(la.login().isEmpty() && la.password().isEmpty())) {
+                        username = la.login();
+                        password = la.password();
+                    }
+                }
+                log.debug("Trying to log in");
+                new LoginPage(driver).doLogin(username, password);
+            }
+        } catch (Exception ex) {
+            log.error("UI test's preconditions method was failed: " + ex.getMessage());
+            log.error(ex.getMessage());
+        }
+    }
+
     private <T extends ChromiumOptions<T>> void setArgumentsForHeadless(T options) {
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
@@ -53,28 +80,6 @@ public abstract class BaseTest {
     private boolean isHeadless() {
         return "headless".equals(System.getProperty("mbrowser"));
     }
-
-//    @BeforeMethod(dependsOnMethods = {"setUp", "openPage"})
-//    protected void executePreconditions(Method method) {
-//        try {
-//            if (!method.isAnnotationPresent(Login.class) || method.getAnnotation(Login.class).doLogIn()) {
-//                String username = EnvConstants.ADMIN_USERNAME;
-//                String password = EnvConstants.ADMIN_PASSWORD;
-//                if (method.isAnnotationPresent(Login.class)) {
-//                    Login la = method.getAnnotation(Login.class);
-//                    if (!(la.login().isEmpty() && la.password().isEmpty())) {
-//                        username = la.login();
-//                        password = la.password();
-//                    }
-//                }
-//                log.debug("Trying to log in");
-//                new LoginPage(driver).doLogin(username, password);
-//            }
-//        } catch (Exception ex) {
-//            log.error("UI test's preconditions method was failed: " + ex.getMessage());
-//            throw new SkipException(ex.getMessage());
-//        }
-//    }
 
     @AfterMethod(alwaysRun = true)
     protected void tearDown() {

@@ -35,7 +35,7 @@ jobs:
           distribution: 'corretto'
           cache: maven
       - name: Run tests
-        run: mvn clean test -Dbrowser=chrome -Dmbrowser=headless -DsuiteXmlFile='src/test/resources/MainSuite.xml' -Dusername=$USERNAME -Dpassword=$PASSWORD -Dapitoken=$API_TOKEN -DENV=$ENV
+        run: mvn clean test -Dbrowser=chrome -Dmbrowser=headless -DsuiteXmlFile='src/test/resources/testXml/GlobalUISuite.xml' -Dusername=$USERNAME -Dpassword=$PASSWORD -Dapitoken=$API_TOKEN -DENV=$ENV
       - name: Get Allure history
         uses: actions/checkout@v2
         if: always()

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Login page">
+    <test name="#2 dont work git actions. Its sad :( ">
+        <classes>
+            <class name="tests.LoginPageTest">
+                <methods>
+                    <include name="testLoginWithAValidUsernameAndPassword"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="#3 dont work git actions. Its sad :( ">
+        <classes>
+            <class name="tests.LoginPageTest">
+                <methods>
+                    <include name="testLoginWithAValidUsernameAndInvalidPassword"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="#4 dont work git actions. Its sad :( ">
+        <classes>
+            <class name="tests.LoginPageTest">
+                <methods>
+                    <include name="testLoginWithInvalidUsernameAndValidPassword"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="#5 dont work git actions. Its sad :( ">
+        <classes>
+            <class name="tests.LoginPageTest">
+                <methods>
+                    <include name="testLoginWithInvalidUsernameAndInvalidPassword"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
