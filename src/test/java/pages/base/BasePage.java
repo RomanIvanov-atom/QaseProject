@@ -24,6 +24,7 @@ public abstract class BasePage extends BaseElement {
     }
 
     public void reloadPage() {
+        log.info("Reloading page");
         driver.navigate().refresh();
     }
 }

@@ -26,6 +26,7 @@ public class ProjectAPI {
                     .header("Token", token);
 
     public void createProject(CreateProjectRq createProjectRq) {
+        log.info("Create project with name '{}' and code '{}' through API", createProjectRq.getTitle(), createProjectRq.getCode());
         given()
                 .spec(spec)
                 .body(gson.toJson(createProjectRq))
