@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Global cross browser UI suite" parallel="tests" thread-count="2">
+    <listeners>
+        <listener class-name="utils.listeners.TestListener"/>
+        <listener class-name="utils.retry.AnnotationTransformer"/>
+    </listeners>
+
+    <test name="Thread #1. Chrome browser">
+        <classes>
+            <class name="tests.ProjectsPageTest"/>
+            <parameter name="browser" value="chrome"/>
+        </classes>
+    </test>
+
+    <test name="Thread #2. Edge browser">
+        <classes>
+            <class name="tests.LoginPageTest"/>
+            <parameter name="browser" value="edge"/>
+        </classes>
+    </test>
+</suite>

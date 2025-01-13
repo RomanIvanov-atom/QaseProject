@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Global UI suite">
+<suite name="Global UI suite" parallel="classes" thread-count="2">
+    <listeners>
+        <listener class-name="utils.listeners.TestListener"/>
+        <listener class-name="utils.retry.AnnotationTransformer"/>
+    </listeners>
 
-    <suite-files>
-        <suite-file path="web/loginPage.xml"/>
-        <suite-file path="web/projectsPage.xml"/>
-    </suite-files>
-
+    <test name="Parallel Test">
+        <classes>
+            <class name="tests.LoginPageTest"/>
+            <class name="tests.ProjectsPageTest"/>
+        </classes>
+    </test>
 </suite>
