@@ -51,10 +51,9 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public ProjectsPage clickLoginButton() {
+    public void clickLoginButton() {
         log.info("Click Login button");
         click(LOGIN_BUTTON);
-        return new ProjectsPage(driver);
     }
 
     public void doLogin(String login, String password) {
