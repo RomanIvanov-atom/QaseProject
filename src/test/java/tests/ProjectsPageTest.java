@@ -11,7 +11,7 @@ import tests.base.BaseTest;
 import utils.constants.Constants;
 
 import static org.testng.Assert.*;
-import static utils.DataGenerator.generateRandomAlphaNumericString;
+import static utils.DataGenerator.generateRandomAlphaNumericUpperCaseString;
 
 @Log4j2
 public class ProjectsPageTest extends BaseTest {
@@ -25,8 +25,8 @@ public class ProjectsPageTest extends BaseTest {
     @Test(testName = "#5 Test create project", description = "#5 Test create project")
     @Description("#5 Test create project")
     public void createProjectTest() {
-        final String projectName = generateRandomAlphaNumericString(10);
-        final String projectCode = generateRandomAlphaNumericString(4);
+        final String projectName = generateRandomAlphaNumericUpperCaseString(10);
+        final String projectCode = generateRandomAlphaNumericUpperCaseString(4);
 
         ProjectsPage projectsPage = new ProjectsPage(driver);
         projectsPage
@@ -41,10 +41,10 @@ public class ProjectsPageTest extends BaseTest {
     @Test(testName = "#6 Test update project", description = "#6 Test update project")
     @Description("#6 Test update project")
     public void updateProjectTest() {
-        final String projectName = generateRandomAlphaNumericString(10);
-        final String projectCode = generateRandomAlphaNumericString(4);
-        final String projectNameUpdated = projectName + generateRandomAlphaNumericString(5);
-        final String projectCodeUpdated = projectCode + generateRandomAlphaNumericString(4);
+        final String projectName = generateRandomAlphaNumericUpperCaseString(10);
+        final String projectCode = generateRandomAlphaNumericUpperCaseString(4);
+        final String projectNameUpdated = projectName + generateRandomAlphaNumericUpperCaseString(5);
+        final String projectCodeUpdated = projectCode + generateRandomAlphaNumericUpperCaseString(4);
 
         CreateProjectRq rq = CreateProjectRq.builder()
                 .title(projectName)
@@ -66,8 +66,8 @@ public class ProjectsPageTest extends BaseTest {
     @Test(testName = "#7 Test delete project", description = "#7 Test delete project")
     @Description("#7 Test delete project")
     public void deleteProjectTest() {
-        final String projectName = generateRandomAlphaNumericString(10);
-        final String projectCode = generateRandomAlphaNumericString(4);
+        final String projectName = generateRandomAlphaNumericUpperCaseString(10);
+        final String projectCode = generateRandomAlphaNumericUpperCaseString(4);
 
         CreateProjectRq rq = CreateProjectRq.builder()
                 .title(projectName)
