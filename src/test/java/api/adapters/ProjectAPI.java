@@ -43,7 +43,7 @@ public class ProjectAPI {
         given()
                 .spec(spec)
                 .when()
-                .delete(URL + projectCode)
+                .delete(URL + projectCode.toUpperCase())
                 .then()
                 .log().all()
                 .statusCode(200);
@@ -53,7 +53,7 @@ public class ProjectAPI {
         given()
                 .spec(spec)
                 .when()
-                .get(URL + projectCode)
+                .get(URL + projectCode.toUpperCase())
                 .then()
                 .log().all()
                 .statusCode(200);

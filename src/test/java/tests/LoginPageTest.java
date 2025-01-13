@@ -11,7 +11,7 @@ import tests.base.annotations.Login;
 import utils.constants.Constants;
 
 import static org.testng.Assert.assertTrue;
-import static utils.DataGenerator.generateRandomAlphaNumericUpperCaseString;
+import static utils.DataGenerator.generateRandomAlphaNumericString;
 
 @Log4j2
 public class LoginPageTest extends BaseTest {
@@ -39,7 +39,7 @@ public class LoginPageTest extends BaseTest {
     @Description("#2 Test Login with a valid username and invalid password")
     @Login(doLogIn = false)
     public void testLoginWithAValidUsernameAndInvalidPassword() {
-        String incorrectPassword = generateRandomAlphaNumericUpperCaseString(10);
+        String incorrectPassword = generateRandomAlphaNumericString(10);
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage
@@ -53,7 +53,7 @@ public class LoginPageTest extends BaseTest {
     @Description("#3 Test Login with invalid username and valid password")
     @Login(doLogIn = false)
     public void testLoginWithInvalidUsernameAndValidPassword() {
-        String incorrectUsername = generateRandomAlphaNumericUpperCaseString(6) + "@gmail.com";
+        String incorrectUsername = generateRandomAlphaNumericString(6) + "@gmail.com";
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage
@@ -67,8 +67,8 @@ public class LoginPageTest extends BaseTest {
     @Description("#4 Test Login with invalid username and invalid password")
     @Login(doLogIn = false)
     public void testLoginWithInvalidUsernameAndInvalidPassword() {
-        String incorrectPassword = generateRandomAlphaNumericUpperCaseString(10);
-        String incorrectUsername = generateRandomAlphaNumericUpperCaseString(6) + "@gmail.com";
+        String incorrectPassword = generateRandomAlphaNumericString(10);
+        String incorrectUsername = generateRandomAlphaNumericString(6) + "@gmail.com";
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage
