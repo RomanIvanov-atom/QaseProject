@@ -3,6 +3,7 @@ package tests;
 import api.adapters.ProjectAPI;
 import api.models.CreateProjectRq;
 import io.qameta.allure.*;
+import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.ProjectsPage;
@@ -12,6 +13,7 @@ import utils.constants.Constants;
 import static org.testng.Assert.*;
 import static utils.DataGenerator.generateRandomAlphaNumericUpperCaseString;
 
+@Log4j2
 public class ProjectsPageTest extends BaseTest {
 
     @BeforeMethod
@@ -25,6 +27,8 @@ public class ProjectsPageTest extends BaseTest {
     public void createProjectTest() {
         final String projectName = generateRandomAlphaNumericUpperCaseString(10);
         final String projectCode = generateRandomAlphaNumericUpperCaseString(4);
+
+        log.info("DEBUG!!! Project code: " + projectCode);
 
         ProjectsPage projectsPage = new ProjectsPage(driver);
         projectsPage
