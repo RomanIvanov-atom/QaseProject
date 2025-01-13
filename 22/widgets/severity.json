@@ -1,1 +1,0 @@
-[{"uid":"c8296ae04f921c06","name":"createProjectTest","time":{"start":1736291872035,"stop":1736291873238,"duration":1203},"status":"passed","severity":"normal"},{"uid":"50bfd22c105f97e5","name":"testLoginWithAValidUsernameAndPassword","time":{"start":1736291928084,"stop":1736291928084,"duration":0},"status":"broken","severity":"normal"}]
