@@ -1,8 +1,10 @@
 package pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import pages.base.BasePage;
 
+@Log4j2
 public class LoginPage extends BasePage {
 
     public LoginPage(WebDriver driver) {
@@ -25,8 +27,9 @@ public class LoginPage extends BasePage {
      ****************************************/
 
     protected void pageLoading() {
+        log.info("Loading Login Page");
         try {
-            if (!(isVisible(LOGIN_BUTTON, 0, long_timeout))) throw new Exception();
+            if (!(isVisible(LOGIN_BUTTON, 0, timeout))) throw new Exception();
         } catch (Exception ex) {
             throw new AssertionError("Login Page was not loaded");
         }
@@ -37,24 +40,26 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage fillUserName(String value) {
+        log.info("Enter {} in username field", value);
         sendKeys(USERNAME_INPUT, value);
         return this;
     }
 
     public LoginPage fillPassword(String value) {
+        log.info("Enter {} in password field", value);
         sendKeys(PASSWORD_INPUT, value);
         return this;
     }
 
     public void clickLoginButton() {
+        log.info("Click Login button");
         click(LOGIN_BUTTON);
     }
 
     public void doLogin(String login, String password) {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.fillUserName(login)
-                .fillPassword(password);
-        loginPage.clickLoginButton();
+        this.fillUserName(login)
+                .fillPassword(password)
+                .clickLoginButton();
         waitForInvisibility(LOGIN_BUTTON);
     }
 

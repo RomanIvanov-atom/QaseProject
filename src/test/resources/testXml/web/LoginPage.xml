@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Login page">
+    <test name="#1 Test Login with a valid username and password">
+        <classes>
+            <class name="tests.LoginPageTest">
+                <methods>
+                    <include name="testLoginWithAValidUsernameAndPassword"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="#2 Test Login with a valid username and invalid password">
+        <classes>
+            <class name="tests.LoginPageTest">
+                <methods>
+                    <include name="testLoginWithAValidUsernameAndInvalidPassword"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="#3 Test Login with invalid username and valid password">
+        <classes>
+            <class name="tests.LoginPageTest">
+                <methods>
+                    <include name="testLoginWithInvalidUsernameAndValidPassword"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="#4 Test Login with invalid username and invalid password">
+        <classes>
+            <class name="tests.LoginPageTest">
+                <methods>
+                    <include name="testLoginWithInvalidUsernameAndInvalidPassword"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
