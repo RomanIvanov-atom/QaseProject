@@ -1,4 +1,4 @@
-qase.base.api.url=https://api.qase.io/v1/project
+qase.base.api.url=https://api.qase.io/v1/project/
 qase.base.login.url=https://app.qase.io/login
 qase.base.projects.url=https://app.qase.io/projects
 qase.api.token=<enter your value here>

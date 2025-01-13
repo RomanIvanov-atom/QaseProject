@@ -22,6 +22,8 @@
         <jackson.dataformat.yaml.version>2.18.2</jackson.dataformat.yaml.version>
         <lombok.version>1.18.36</lombok.version>
         <apache.commons.version>3.17.0</apache.commons.version>
+        <rest.assured.version>5.5.0</rest.assured.version>
+        <gson.version>2.11.0</gson.version>
         <suiteXmlFile>src/test/resources/testXml/GlobalUISuite.xml</suiteXmlFile>
     </properties>
 
@@ -86,6 +88,19 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${apache.commons.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest.assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
         </dependency>
 
     </dependencies>

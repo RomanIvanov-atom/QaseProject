@@ -22,6 +22,12 @@ public class ProjectsPage extends BasePage {
     private static final String CREATE_NEW_PROJECT_BUTTON = PROJECT_LIST_CONTROLS + "//button//span[contains(text(), 'Create new project')]";
     private static final String PROJECTS_LIST_WRAPPER = "//div[@id='application-content']//table";
     private static final String SPECIFIC_PROJECT_NAME_IN_PROJECTS_LIST = PROJECTS_LIST_WRAPPER + "//a[contains(text(),%s)]";
+    private static final String SPECIFIC_PROJECT_ACTION_MENU = PROJECTS_LIST_WRAPPER + "//a[contains(text(),%s)]/ancestor::tr" +
+            "//button[@aria-label='Open action menu']/span";
+    private static final String ACTION_MENU_WRAPPER = "//div[contains(@data-trigger, 'MenuTrigger')]//div[@role='menu']";
+    private static final String SETTINGS_BUTTON = ACTION_MENU_WRAPPER + "//div[@data-testid='settings']";
+    private static final String REMOVE_BUTTON = ACTION_MENU_WRAPPER + "//div[@data-testid='remove']";
+
 
     /* **************************************
      *************** Methods ****************
@@ -42,8 +48,41 @@ public class ProjectsPage extends BasePage {
         return new CreateProjectPage(driver);
     }
 
-    public boolean isCreatedProjectVisible(String projectName) {
+    public boolean isProjectWithSpecificNameVisible(String projectName) {
         return isVisible(String.format(SPECIFIC_PROJECT_NAME_IN_PROJECTS_LIST, Quotes.escape(projectName)));
+    }
+
+    public boolean isProjectWithSpecificNameInvisible(String projectName) {
+        return isInvisible(String.format(SPECIFIC_PROJECT_NAME_IN_PROJECTS_LIST, Quotes.escape(projectName)));
+    }
+
+    public ProjectSettingsPage clickSettingsOnActionMenuForSpecificProject(String projectName) {
+        log.info("Click 'Settings' on action menu for '{}' project", projectName);
+        clickOnSpecificActionMenu(projectName);
+        clickSettingsOnActionMenu();
+        return new ProjectSettingsPage(driver);
+    }
+
+    public DeleteProjectPage clickRemoveOnActionMenuForSpecificProject(String projectName) {
+        log.info("Click 'Remove' on action menu for '{}' project", projectName);
+        clickOnSpecificActionMenu(projectName);
+        clickRemoveOnActionMenu();
+        return new DeleteProjectPage(driver);
+    }
+
+    private void clickOnSpecificActionMenu(String projectName) {
+        click(String.format(SPECIFIC_PROJECT_ACTION_MENU, Quotes.escape(projectName)));
+        waitForVisibility(ACTION_MENU_WRAPPER);
+    }
+
+    private void clickSettingsOnActionMenu() {
+        click(SETTINGS_BUTTON);
+        waitForInvisibility(ACTION_MENU_WRAPPER);
+    }
+
+    private void clickRemoveOnActionMenu() {
+        click(REMOVE_BUTTON);
+        waitForInvisibility(ACTION_MENU_WRAPPER);
     }
 
     public boolean isPageLoaded() {

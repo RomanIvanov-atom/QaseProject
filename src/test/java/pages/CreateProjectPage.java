@@ -33,7 +33,7 @@ public class CreateProjectPage extends BasePage {
         try {
             if (!(isVisible(CREATE_PROJECT_BUTTON, 0, timeout))) throw new Exception();
         } catch (Exception ex) {
-            throw new AssertionError("Projects Page was not loaded");
+            throw new AssertionError("Projects modal was not loaded");
         }
     }
 
