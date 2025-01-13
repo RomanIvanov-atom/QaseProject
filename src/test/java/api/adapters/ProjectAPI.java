@@ -22,6 +22,7 @@ public class ProjectAPI {
 
     public RequestSpecification spec =
             given()
+                    .log().all()
                     .contentType(ContentType.JSON)
                     .header("Token", token);
 
