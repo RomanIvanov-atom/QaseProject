@@ -7,7 +7,7 @@ import java.util.Random;
 public class DataGenerator {
 
     public static String generateRandomAlphaNumericUpperCaseString(int length) {
-        return RandomStringUtils.random(length, true, true);
+        return RandomStringUtils.random(length, true, true).toUpperCase();
     }
 
     public static String generateRandomNumericString(int length) {
