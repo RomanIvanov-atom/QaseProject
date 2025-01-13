@@ -1,3 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","53468","testLoginWithAValidUsernameAndPassword","Global suite","Sun Jan 12 09:39:06 GMT 2025","failed","Sun Jan 12 09:40:00 GMT 2025","tests.LoginPageTest","#2 dont work git actions. Its sad :( ","tests.LoginPageTest","testLoginWithAValidUsernameAndPassword"
-"","1032","createProjectTest","Global suite","Sun Jan 12 09:39:04 GMT 2025","passed","Sun Jan 12 09:39:05 GMT 2025","tests.ProjectTest","#1 dont work git actions :( ","tests.ProjectTest","createProjectTest"
