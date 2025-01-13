@@ -16,6 +16,9 @@ import static utils.DataGenerator.generateRandomAlphaNumericUpperCaseString;
 @Log4j2
 public class LoginPageTest extends BaseTest {
 
+    private final String incorrectUsername = generateRandomAlphaNumericUpperCaseString(6) + "@gmail.com";
+    private final String incorrectPassword = generateRandomAlphaNumericUpperCaseString(10);
+
     @BeforeMethod
     @Step("Open Login Page")
     public void openPage() {
@@ -39,8 +42,6 @@ public class LoginPageTest extends BaseTest {
     @Description("#2 Test Login with a valid username and invalid password")
     @Login(doLogIn = false)
     public void testLoginWithAValidUsernameAndInvalidPassword() {
-        String incorrectPassword = generateRandomAlphaNumericUpperCaseString(10);
-
         LoginPage loginPage = new LoginPage(driver);
         loginPage
                 .fillUserName(Constants.USERNAME)
@@ -53,8 +54,6 @@ public class LoginPageTest extends BaseTest {
     @Description("#3 Test Login with invalid username and valid password")
     @Login(doLogIn = false)
     public void testLoginWithInvalidUsernameAndValidPassword() {
-        String incorrectUsername = generateRandomAlphaNumericUpperCaseString(6) + "@gmail.com";
-
         LoginPage loginPage = new LoginPage(driver);
         loginPage
                 .fillUserName(incorrectUsername)
@@ -67,9 +66,6 @@ public class LoginPageTest extends BaseTest {
     @Description("#4 Test Login with invalid username and invalid password")
     @Login(doLogIn = false)
     public void testLoginWithInvalidUsernameAndInvalidPassword() {
-        String incorrectPassword = generateRandomAlphaNumericUpperCaseString(10);
-        String incorrectUsername = generateRandomAlphaNumericUpperCaseString(6) + "@gmail.com";
-
         LoginPage loginPage = new LoginPage(driver);
         loginPage
                 .fillUserName(incorrectUsername)

@@ -13,23 +13,29 @@ import static io.restassured.RestAssured.given;
 
 @Log4j2
 public class ProjectAPI {
-    public final String token = Constants.API_TOKEN;
-    public final String URL = Constants.BASE_API_URL;
 
-    Gson gson = new GsonBuilder()
+    public static final String token = Constants.API_TOKEN;
+    public static final String URL = Constants.BASE_API_URL;
+
+    public static Gson gson = new GsonBuilder()
             .excludeFieldsWithoutExposeAnnotation()
             .create();
 
-    public RequestSpecification spec =
+    public static RequestSpecification spec =
             given()
                     .contentType(ContentType.JSON)
                     .header("Token", token);
 
-    public void createProject(CreateProjectRq createProjectRq) {
-        log.info("Create project with name '{}' and code '{}' through API", createProjectRq.getTitle(), createProjectRq.getCode());
+    @Description("Ccreate project through API")
+    public static void createProject(String projectName, String projectCode) {
+        log.info("Create project with name '{}' and code '{}' through API", projectName, projectCode);
+        CreateProjectRq createProjectBody = CreateProjectRq.builder()
+                .title(projectName)
+                .code(projectCode)
+                .build();
         given()
                 .spec(spec)
-                .body(gson.toJson(createProjectRq))
+                .body(gson.toJson(createProjectBody))
                 .when()
                 .post(URL)
                 .then()
@@ -38,7 +44,7 @@ public class ProjectAPI {
     }
 
     @Description("Delete project through API")
-    public void deleteProject(String projectCode) {
+    public static void deleteProject(String projectCode) {
         log.info("Deleting project with code {} through API", projectCode);
         given()
                 .spec(spec)
