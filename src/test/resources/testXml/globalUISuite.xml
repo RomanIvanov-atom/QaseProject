@@ -3,8 +3,8 @@
 <suite name="Global UI suite">
 
     <suite-files>
-        <suite-file path="web/LoginPage.xml"/>
-        <suite-file path="web/ProjectsPage.xml"/>
+        <suite-file path="web/loginPage.xml"/>
+        <suite-file path="web/projectsPage.xml"/>
     </suite-files>
 
 </suite>

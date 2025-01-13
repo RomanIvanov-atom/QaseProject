@@ -24,7 +24,7 @@
         <apache.commons.version>3.17.0</apache.commons.version>
         <rest.assured.version>5.5.0</rest.assured.version>
         <gson.version>2.11.0</gson.version>
-        <suiteXmlFile>src/test/resources/testXml/GlobalUISuite.xml</suiteXmlFile>
+        <suiteXmlFile>src/test/resources/testXml/globalUISuite.xml</suiteXmlFile>
     </properties>
 
     <dependencyManagement>
