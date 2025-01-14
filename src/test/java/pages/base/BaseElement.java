@@ -108,7 +108,7 @@ public abstract class BaseElement {
     }
 
     public boolean isVisible(String xpath) {
-        return isVisible(xpath, 0, timeout);
+        return isVisible(xpath, 0, short_timeout);
     }
 
     /**
@@ -242,11 +242,11 @@ public abstract class BaseElement {
     }
 
     public void waitForVisibility(String xpath, int index) {
-        waitForVisibility(xpath, index, timeout);
+        waitForVisibility(xpath, index, short_timeout);
     }
 
     public void waitForVisibility(String xpath) {
-        waitForVisibility(xpath, 0, timeout);
+        waitForVisibility(xpath, 0, short_timeout);
     }
 
     private void waitUntilElementIsVisible(By path, int timeout) {
@@ -285,6 +285,27 @@ public abstract class BaseElement {
 
     public void waitForInvisibility(String xpath) {
         waitForInvisibility(xpath, short_timeout);
+    }
+
+    /**
+     * Return element invisibility state
+     *
+     */
+    public boolean isInvisible(String xpath, int timeout) {
+        try {
+            waitUntilElementIsInvisible(By.xpath(xpath), timeout);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Return element invisibility state
+     *
+     */
+    public boolean isInvisible(String xpath) {
+        return isInvisible(xpath, short_timeout);
     }
 
     /**

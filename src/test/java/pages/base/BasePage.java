@@ -22,4 +22,9 @@ public abstract class BasePage extends BaseElement {
         header.clickProjectsButtonOnHeader();
         return new ProjectsPage(driver);
     }
+
+    public void reloadPage() {
+        log.info("Reloading page");
+        driver.navigate().refresh();
+    }
 }
