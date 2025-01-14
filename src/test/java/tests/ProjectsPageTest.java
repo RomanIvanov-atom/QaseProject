@@ -46,8 +46,7 @@ public class ProjectsPageTest extends BaseTest {
         createProject(projectName, projectCode);
 
         ProjectsPage projectsPage = new ProjectsPage(driver);
-        projectsPage.reloadPage();
-        projectsPage
+        projectsPage.reloadPage()
                 .clickSettingsOnActionMenuForSpecificProject(projectName)
                 .updateProject(projectNameUpdated, projectCodeUpdated)
                 .clickProjectsButtonOnHeader();
@@ -62,8 +61,7 @@ public class ProjectsPageTest extends BaseTest {
         createProject(projectName, projectCode);
 
         ProjectsPage projectsPage = new ProjectsPage(driver);
-        projectsPage.reloadPage();
-        projectsPage
+        projectsPage.reloadPage()
                 .clickRemoveOnActionMenuForSpecificProject(projectName)
                 .clickConfirmDeleteProjectButton();
         assertTrue(projectsPage.isProjectWithSpecificNameInvisible(projectName), "Deleted project was found in projects list");

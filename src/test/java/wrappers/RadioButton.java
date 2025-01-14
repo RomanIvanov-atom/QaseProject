@@ -18,7 +18,7 @@ public class RadioButton extends BaseElement {
     }
 
     public void select(String option) {
-        log.info("Selecting '{}' option as {}", option, label);
+        log.info("Selecting '{}' option as '{}'", option, label);
         click(String.format(SPECIFIC_RADIOBUTTON, Quotes.escape(label), Quotes.escape(option)));
     }
 }

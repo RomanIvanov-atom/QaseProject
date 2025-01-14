@@ -11,13 +11,13 @@ public class Input extends BaseElement {
     private static final String SPECIFIC_INPUT = "//label[contains(text(),%s)]//ancestor::div[2]//input";
     private final String label;
 
-    public Input( WebDriver driver, String label) {
+    public Input(WebDriver driver, String label) {
         super(driver);
         this.label = label;
     }
 
     public void write(String text) {
-        log.info("Writing '{}' into {}", text, label);
+        log.info("Writing '{}' into '{}'", text, label);
         sendKeys(String.format(SPECIFIC_INPUT, Quotes.escape(label)), text);
     }
 }

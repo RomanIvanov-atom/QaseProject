@@ -24,6 +24,7 @@
         <apache.commons.version>3.17.0</apache.commons.version>
         <rest.assured.version>5.5.0</rest.assured.version>
         <gson.version>2.11.0</gson.version>
+        <faker.version>1.0.2</faker.version>
         <suiteXmlFile>src/test/resources/testXml/globalUISuite.xml</suiteXmlFile>
     </properties>
 
@@ -101,6 +102,12 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${faker.version}</version>
         </dependency>
 
     </dependencies>
