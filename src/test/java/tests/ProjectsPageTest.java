@@ -1,7 +1,5 @@
 package tests;
 
-import api.adapters.ProjectAPI;
-import api.models.CreateProjectRq;
 import io.qameta.allure.*;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.BeforeMethod;
@@ -10,8 +8,7 @@ import pages.ProjectsPage;
 import tests.base.BaseTest;
 import utils.constants.Constants;
 
-import static api.adapters.ProjectAPI.createProject;
-import static api.adapters.ProjectAPI.deleteProject;
+import static api.adapters.ProjectAPI.*;
 import static org.testng.Assert.*;
 import static utils.DataGenerator.generateRandomAlphaNumericUpperCaseString;
 
