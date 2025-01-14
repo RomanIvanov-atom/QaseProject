@@ -26,7 +26,7 @@ public class ProjectsPageTest extends BaseTest {
 
     @Test(testName = "#5 Test create project", description = "#5 Test create project")
     @Description("#5 Test create project")
-    public void createProjectTest() {
+    public void testCreateProject() {
         ProjectsPage projectsPage = new ProjectsPage(driver);
         projectsPage
                 .clickCreateProjectButton()
@@ -39,7 +39,7 @@ public class ProjectsPageTest extends BaseTest {
 
     @Test(testName = "#6 Test update project", description = "#6 Test update project")
     @Description("#6 Test update project")
-    public void updateProjectTest() {
+    public void testUpdateProject() {
         final String projectNameUpdated = projectName + generateRandomAlphaNumericUpperCaseString(5);
         final String projectCodeUpdated = projectCode + generateRandomAlphaNumericUpperCaseString(4);
 
@@ -58,7 +58,7 @@ public class ProjectsPageTest extends BaseTest {
 
     @Test(testName = "#7 Test delete project", description = "#7 Test delete project")
     @Description("#7 Test delete project")
-    public void deleteProjectTest() {
+    public void testDeleteProject() {
         createProject(projectName, projectCode);
 
         ProjectsPage projectsPage = new ProjectsPage(driver);

@@ -5,7 +5,7 @@
         <classes>
             <class name="tests.ProjectsPageTest">
                 <methods>
-                    <include name="createProjectTest"/>
+                    <include name="testCreateProject"/>
                 </methods>
             </class>
         </classes>
@@ -15,7 +15,7 @@
         <classes>
             <class name="tests.ProjectsPageTest">
                 <methods>
-                    <include name="updateProjectTest"/>
+                    <include name="testUpdateProject"/>
                 </methods>
             </class>
         </classes>
@@ -25,7 +25,7 @@
         <classes>
             <class name="tests.ProjectsPageTest">
                 <methods>
-                    <include name="deleteProjectTest"/>
+                    <include name="testDeleteProject"/>
                 </methods>
             </class>
         </classes>
