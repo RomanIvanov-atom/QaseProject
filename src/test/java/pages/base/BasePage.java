@@ -6,7 +6,7 @@ import pages.ProjectsPage;
 import pages.components.Header;
 
 @Log4j2
-public abstract class BasePage extends BaseElement {
+public abstract class BasePage<T extends BasePage<T>> extends BaseElement {
 
     protected Header header;
 
@@ -23,8 +23,9 @@ public abstract class BasePage extends BaseElement {
         return new ProjectsPage(driver);
     }
 
-    public void reloadPage() {
+    public T reloadPage() {
         log.info("Reloading page");
         driver.navigate().refresh();
+        return (T) this;
     }
 }

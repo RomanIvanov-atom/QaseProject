@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Projects page">
+    <test name="#8 Test create test case">
+        <classes>
+            <class name="tests.TestCasesPageTest">
+                <methods>
+                    <include name="testCreateTestCase"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="#9 Test update test case">
+        <classes>
+            <class name="tests.TestCasesPageTest">
+                <methods>
+                    <include name="testUpdateTestCase"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -27,6 +27,10 @@ public class LoginPageTest extends BaseTest {
 
     @Test(testName = "#1 Test Login with a valid username and password")
     @Description("#1 Test Login with a valid username and password")
+    @Feature("Login")
+    @Severity(SeverityLevel.CRITICAL)
+    @TmsLink("https://some-tms.com/test/1")
+    @Owner("Roman R")
     @Login(doLogIn = false)
     public void testLoginWithAValidUsernameAndPassword() {
         LoginPage loginPage = new LoginPage(driver);
@@ -40,6 +44,9 @@ public class LoginPageTest extends BaseTest {
 
     @Test(testName = "#2 Test Login with a valid username and invalid password")
     @Description("#2 Test Login with a valid username and invalid password")
+    @Feature("Login")
+    @TmsLink("https://some-tms.com/test/2")
+    @Owner("Roman R")
     @Login(doLogIn = false)
     public void testLoginWithAValidUsernameAndInvalidPassword() {
         LoginPage loginPage = new LoginPage(driver);
@@ -52,6 +59,9 @@ public class LoginPageTest extends BaseTest {
 
     @Test(testName = "#3 Test Login with invalid username and valid password")
     @Description("#3 Test Login with invalid username and valid password")
+    @Feature("Login")
+    @TmsLink("https://some-tms.com/test/3")
+    @Owner("Roman R")
     @Login(doLogIn = false)
     public void testLoginWithInvalidUsernameAndValidPassword() {
         LoginPage loginPage = new LoginPage(driver);
@@ -64,6 +74,9 @@ public class LoginPageTest extends BaseTest {
 
     @Test(testName = "#4 Test Login with invalid username and invalid password")
     @Description("#4 Test Login with invalid username and invalid password")
+    @Feature("Login")
+    @TmsLink("https://some-tms.com/test/4")
+    @Owner("Roman R")
     @Login(doLogIn = false)
     public void testLoginWithInvalidUsernameAndInvalidPassword() {
         LoginPage loginPage = new LoginPage(driver);

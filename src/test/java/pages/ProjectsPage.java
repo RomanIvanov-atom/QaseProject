@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.Quotes;
 import pages.base.BasePage;
 
 @Log4j2
-public class ProjectsPage extends BasePage {
+public class ProjectsPage extends BasePage<ProjectsPage> {
 
     public ProjectsPage(WebDriver driver) {
         super(driver);
@@ -27,7 +27,6 @@ public class ProjectsPage extends BasePage {
     private static final String ACTION_MENU_WRAPPER = "//div[contains(@data-trigger, 'MenuTrigger')]//div[@role='menu']";
     private static final String SETTINGS_BUTTON = ACTION_MENU_WRAPPER + "//div[@data-testid='settings']";
     private static final String REMOVE_BUTTON = ACTION_MENU_WRAPPER + "//div[@data-testid='remove']";
-
 
     /* **************************************
      *************** Methods ****************
@@ -68,6 +67,12 @@ public class ProjectsPage extends BasePage {
         clickOnSpecificActionMenu(projectName);
         clickRemoveOnActionMenu();
         return new DeleteProjectPage(driver);
+    }
+
+    public ProjectPage clickOnSpecificProject(String projectName) {
+        click(String.format(SPECIFIC_PROJECT_NAME_IN_PROJECTS_LIST, Quotes.escape(projectName)));
+        waitForInvisibility(CREATE_NEW_PROJECT_BUTTON);
+        return new ProjectPage(driver);
     }
 
     private void clickOnSpecificActionMenu(String projectName) {

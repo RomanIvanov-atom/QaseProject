@@ -1,6 +1,7 @@
 package tests.base;
 
 import io.qameta.allure.Step;
+import io.restassured.RestAssured;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -48,6 +49,7 @@ public abstract class BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         context.setAttribute("driver", driver);
+        RestAssured.baseURI = "https://api.qase.io/v1";
     }
 
 
