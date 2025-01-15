@@ -24,7 +24,7 @@ public class TestCasesPageTest extends BaseTest {
 
     private final String projectName = generateRandomAlphaNumericUpperCaseString(10);
     private final String projectCode = generateRandomAlphaNumericUpperCaseString(4);
-    private final String testCaseTitle = generateRandomAlphaNumericUpperCaseString(4) + generateRandomAlphaNumericUpperCaseString(4);;
+    private final String testCaseTitle = generateRandomAlphaNumericUpperCaseString(4) + generateRandomAlphaNumericUpperCaseString(4);
     private final String testCaseDescription = generateRandomAlphaNumericUpperCaseString(20);
     private final String testCasePreConditions = generateRandomAlphaNumericUpperCaseString(18);
     private final String testCasePostConditions = generateRandomAlphaNumericUpperCaseString(19);
