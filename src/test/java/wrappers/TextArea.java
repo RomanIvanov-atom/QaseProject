@@ -21,4 +21,9 @@ public class TextArea extends BaseElement {
         log.info("Writing '{}' into '{}' text area", text, label);
         sendKeys(String.format(SPECIFIC_TEXT_AREA, Quotes.escape(label)), text);
     }
+
+    public String getText() {
+        log.info("Getting text from '{}' text area field", label);
+        return getText(String.format(SPECIFIC_TEXT_AREA, Quotes.escape(label)) + "//p");
+    }
 }

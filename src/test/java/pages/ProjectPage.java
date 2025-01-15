@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Quotes;
 import pages.base.BasePage;
+import pages.components.TestCaseInfoSidePanel;
 
 @Log4j2
 public class ProjectPage extends BasePage {
@@ -42,6 +43,12 @@ public class ProjectPage extends BasePage {
         click(CREATE_TEST_CASE_BUTTON);
         waitForInvisibility(CREATE_TEST_CASE_BUTTON);
         return new TestCasePage(driver);
+    }
+
+    public TestCaseInfoSidePanel clickSpecificTestCase(String testCaseName) {
+        log.info("Click '{}' test case", testCaseName);
+        click(String.format(SPECIFIC_TEST_CASE, Quotes.escape(testCaseName)));
+        return new TestCaseInfoSidePanel(driver);
     }
 
     public boolean isSpecificTestCaseVisible(String testCaseName) {

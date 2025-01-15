@@ -38,8 +38,8 @@ public class TestCasePage extends BasePage {
         }
     }
 
-    public ProjectPage createTestCase(TestCase testCase) {
-        log.info("Creating test case '{}'", testCase.getTitle());
+    public TestCasePage fillAllTestCaseFields(TestCase testCase) {
+        log.info("Filling all fields for test case '{}'", testCase.getTitle());
         new Input(driver, "Title").write(testCase.getTitle());
         new Dropdown(driver, "Status").select(testCase.getStatus());
         new TextArea(driver, "Description").write(testCase.getDescription());
@@ -50,13 +50,30 @@ public class TestCasePage extends BasePage {
         new Dropdown(driver, "Behavior").select(testCase.getBehavior());
         new TextArea(driver, "Pre-conditions").write(testCase.getPreConditions());
         new TextArea(driver, "Post-conditions").write(testCase.getPostConditions());
-        clickSave();
-        return new ProjectPage(driver);
+        return this;
     }
 
-    private void clickSave() {
+    public TestCasePage fillBasicTestCaseFields(TestCase testCase) {
+        log.info("Filling Title, Description, Pre- and Post-condition fields for test case '{}'", testCase.getTitle());
+        new Input(driver, "Title").write(testCase.getTitle());
+        new TextArea(driver, "Description").write(testCase.getDescription());
+        new TextArea(driver, "Pre-conditions").write(testCase.getPreConditions());
+        new TextArea(driver, "Post-conditions").write(testCase.getPostConditions());
+        return this;
+    }
+
+    public String getTextFromSpecificInputField(String field) {
+        return new Input(driver, field).getText();
+    }
+
+    public String getTextFromSpecificTextAreaField(String field) {
+        return new TextArea(driver, field).getText();
+    }
+
+    public ProjectPage clickSave() {
         log.info("Click 'Save' button");
         click(CREATE_TEST_CASE_BUTTON);
         waitForInvisibility(PAGE_TITLE);
+        return new ProjectPage(driver);
     }
 }

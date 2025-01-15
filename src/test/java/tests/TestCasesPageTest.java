@@ -1,18 +1,21 @@
 package tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Step;
+import io.qameta.allure.*;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.ProjectPage;
 import pages.ProjectsPage;
+import pages.TestCasePage;
 import tests.base.BaseTest;
 import utils.constants.Constants;
 
 import static api.adapters.ProjectAPI.createProject;
 import static api.adapters.ProjectAPI.deleteProject;
+import static api.adapters.TestCaseAPI.createTestCase;
 import static dto.testCase.TestCaseFactory.getFilledAccount;
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import static utils.DataGenerator.generateRandomAlphaNumericUpperCaseString;
 
@@ -34,6 +37,9 @@ public class TestCasesPageTest extends BaseTest {
 
     @Test(testName = "#8 Test create test case", description = "#8 Test create test case")
     @Description("#8 Test create test case")
+    @Feature("Test-case")
+    @TmsLink("https://some-tms.com/test/8")
+    @Owner("Roman R")
     public void testCreateTestCase() {
         createProject(projectName, projectCode);
 
@@ -41,30 +47,51 @@ public class TestCasesPageTest extends BaseTest {
         projectsPage.reloadPage()
                 .clickOnSpecificProject(projectName)
                 .clickCreateTestCase()
-                .createTestCase(getFilledAccount(testCaseTitle, testCaseDescription, testCasePreConditions, testCasePostConditions));
+                .fillAllTestCaseFields(getFilledAccount(testCaseTitle, testCaseDescription, testCasePreConditions, testCasePostConditions))
+                .clickSave();
         assertTrue(new ProjectPage(driver).isSpecificTestCaseVisible(testCaseTitle), "Created test case wasn't found in test cases list");
 
         deleteProject(projectCode);
     }
 
-//    @Test(testName = "#9 Test update test case", description = "#9 Test update test case")
-//    @Description("#9 Test update test case")
-//    public void testUpdateTestCase() {
-//        final String projectNameUpdated = projectName + generateRandomAlphaNumericUpperCaseString(5);
-//        final String projectCodeUpdated = projectCode + generateRandomAlphaNumericUpperCaseString(4);
-//
-//        createProject(projectName, projectCode);
-//
-//        ProjectsPage projectsPage = new ProjectsPage(driver);
-//        projectsPage.reloadPage();
-//        projectsPage
-//                .clickSettingsOnActionMenuForSpecificProject(projectName)
-//                .updateProject(projectNameUpdated, projectCodeUpdated)
-//                .clickProjectsButtonOnHeader();
-//        assertTrue(projectsPage.isProjectWithSpecificNameVisible(projectNameUpdated), "Updated project wasn't found in projects list");
-//
-//        deleteProject(projectCodeUpdated);
-//    }
+    @Test(testName = "#9 Test update test case", description = "#9 Test update test case")
+    @Description("#9 Test update test case")
+    @Feature("Test-case")
+    @TmsLink("https://some-tms.com/test/9")
+    @Owner("Roman R")
+    public void testUpdateTestCase() {
+        final String testCaseTitleUpdated = testCaseTitle + generateRandomAlphaNumericUpperCaseString(2);
+        final String testCaseDescriptionUpdated = testCaseDescription + generateRandomAlphaNumericUpperCaseString(3);
+        final String testCasePreConditionsUpdated = testCaseDescription + generateRandomAlphaNumericUpperCaseString(2);
+        final String testCasePostConditionsUpdated = testCaseDescription + generateRandomAlphaNumericUpperCaseString(4);
+
+        createProject(projectName, projectCode);
+        createTestCase(projectCode, testCaseTitle, testCaseDescription, testCasePreConditions, testCasePostConditions);
+
+        ProjectsPage projectsPage = new ProjectsPage(driver);
+        projectsPage.reloadPage()
+                .clickOnSpecificProject(projectName)
+                .clickSpecificTestCase(testCaseTitle)
+                .clickEditTestCaseButton()
+                .fillBasicTestCaseFields(getFilledAccount(testCaseTitleUpdated, testCaseDescriptionUpdated, testCasePreConditionsUpdated, testCasePostConditionsUpdated))
+                .clickSave()
+                .clickSpecificTestCase(testCaseTitleUpdated)
+                .clickEditTestCaseButton();
+
+        SoftAssert softAssert = new SoftAssert();
+        TestCasePage testCasePage = new TestCasePage(driver);
+        assertEquals(testCasePage.getTextFromSpecificInputField("Title"), testCaseTitleUpdated,
+                "Title wasn't changed");
+        assertEquals(testCasePage.getTextFromSpecificTextAreaField("Description"), testCaseDescriptionUpdated,
+                "Description wasn't changed");
+        assertEquals(testCasePage.getTextFromSpecificTextAreaField("Pre-conditions"), testCasePreConditionsUpdated,
+                "Pre-conditions wasn't changed");
+        assertEquals(testCasePage.getTextFromSpecificTextAreaField("Post-conditions"), testCasePostConditionsUpdated,
+                "Post-conditions wasn't changed");
+        softAssert.assertAll();
+
+        deleteProject(projectCode);
+    }
 //
 //    @Test(testName = "#10 Test delete test case", description = "#10 Test delete test case")
 //    @Description("#10 Test delete test case")

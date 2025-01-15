@@ -20,4 +20,9 @@ public class Input extends BaseElement {
         log.info("Writing '{}' into '{}'", text, label);
         sendKeys(String.format(SPECIFIC_INPUT, Quotes.escape(label)), text);
     }
+
+    public String getText() {
+        log.info("Getting text from '{}' input field", label);
+        return getAttribute(String.format(SPECIFIC_INPUT, Quotes.escape(label)), 0, "value");
+    }
 }

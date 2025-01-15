@@ -8,8 +8,9 @@ import pages.ProjectsPage;
 import tests.base.BaseTest;
 import utils.constants.Constants;
 
-import static api.adapters.ProjectAPI.*;
-import static org.testng.Assert.*;
+import static api.adapters.ProjectAPI.createProject;
+import static api.adapters.ProjectAPI.deleteProject;
+import static org.testng.Assert.assertTrue;
 import static utils.DataGenerator.generateRandomAlphaNumericUpperCaseString;
 
 @Log4j2
@@ -26,6 +27,10 @@ public class ProjectsPageTest extends BaseTest {
 
     @Test(testName = "#5 Test create project", description = "#5 Test create project")
     @Description("#5 Test create project")
+    @Feature("Projects")
+    @Severity(SeverityLevel.CRITICAL)
+    @TmsLink("https://some-tms.com/test/5")
+    @Owner("Roman R")
     public void testCreateProject() {
         ProjectsPage projectsPage = new ProjectsPage(driver);
         projectsPage
@@ -39,6 +44,9 @@ public class ProjectsPageTest extends BaseTest {
 
     @Test(testName = "#6 Test update project", description = "#6 Test update project")
     @Description("#6 Test update project")
+    @Feature("Projects")
+    @TmsLink("https://some-tms.com/test/6")
+    @Owner("Roman R")
     public void testUpdateProject() {
         final String projectNameUpdated = projectName + generateRandomAlphaNumericUpperCaseString(5);
         final String projectCodeUpdated = projectCode + generateRandomAlphaNumericUpperCaseString(4);
@@ -57,6 +65,9 @@ public class ProjectsPageTest extends BaseTest {
 
     @Test(testName = "#7 Test delete project", description = "#7 Test delete project")
     @Description("#7 Test delete project")
+    @Feature("Projects")
+    @TmsLink("https://some-tms.com/test/7")
+    @Owner("Roman R")
     public void testDeleteProject() {
         createProject(projectName, projectCode);
 

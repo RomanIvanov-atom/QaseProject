@@ -1,5 +1,6 @@
-package api.models;
+package api.models.project;
 
+import api.models.base.Requestable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
@@ -7,7 +8,8 @@ import lombok.Data;
 
 @Data
 @Builder
-public class CreateProjectRq {
+public class CreateProjectRq implements Requestable {
+
     @SerializedName("title")
     @Expose
     private String title;
