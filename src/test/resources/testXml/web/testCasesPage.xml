@@ -10,4 +10,14 @@
             </class>
         </classes>
     </test>
+
+    <test name="#9 Test update test case">
+        <classes>
+            <class name="tests.TestCasesPageTest">
+                <methods>
+                    <include name="testUpdateTestCase"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>

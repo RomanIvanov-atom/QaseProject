@@ -9,6 +9,7 @@
     <test name="Thread #1. Chrome browser">
         <classes>
             <class name="tests.ProjectsPageTest"/>
+            <class name="tests.TestCasesPageTest"/>
             <parameter name="browser" value="chrome"/>
         </classes>
     </test>
