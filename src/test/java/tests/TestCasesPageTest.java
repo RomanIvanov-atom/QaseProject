@@ -59,6 +59,7 @@ public class TestCasesPageTest extends BaseTest {
     @Feature("Test-case")
     @TmsLink("https://some-tms.com/test/9")
     @Owner("Roman R")
+    @Flaky
     public void testUpdateTestCase() {
         final String testCaseTitleUpdated = testCaseTitle + generateRandomAlphaNumericUpperCaseString(2);
         final String testCaseDescriptionUpdated = testCaseDescription + generateRandomAlphaNumericUpperCaseString(3);
