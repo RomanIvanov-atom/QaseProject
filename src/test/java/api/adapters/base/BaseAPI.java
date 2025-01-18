@@ -37,4 +37,16 @@ public class BaseAPI {
                 .log().all()
                 .statusCode(expectedCode);
     }
+
+    public static void createDeleteRequest(String path, int expectedCode) {
+        log.info("Response info (Headers and body):\n");
+        given()
+                .baseUri(URL)
+                .spec(spec)
+                .when()
+                .delete(path)
+                .then()
+                .log().all()
+                .statusCode(expectedCode);
+    }
 }

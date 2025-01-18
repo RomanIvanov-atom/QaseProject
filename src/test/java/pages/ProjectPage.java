@@ -54,4 +54,8 @@ public class ProjectPage extends BasePage {
     public boolean isSpecificTestCaseVisible(String testCaseName) {
         return isVisible(String.format(SPECIFIC_TEST_CASE, Quotes.escape(testCaseName)));
     }
+
+    public boolean isSpecificTestCaseInvisible(String testCaseName) {
+        return isInvisible(String.format(SPECIFIC_TEST_CASE, Quotes.escape(testCaseName)));
+    }
 }

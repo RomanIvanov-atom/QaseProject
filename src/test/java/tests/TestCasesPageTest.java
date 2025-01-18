@@ -15,8 +15,7 @@ import static api.adapters.ProjectAPI.createProject;
 import static api.adapters.ProjectAPI.deleteProject;
 import static api.adapters.TestCaseAPI.createTestCase;
 import static dto.testCase.TestCaseFactory.getFilledAccount;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 import static utils.DataGenerator.generateRandomAlphaNumericUpperCaseString;
 
 @Log4j2
@@ -93,17 +92,24 @@ public class TestCasesPageTest extends BaseTest {
 
         deleteProject(projectCode);
     }
-//
-//    @Test(testName = "#10 Test delete test case", description = "#10 Test delete test case")
-//    @Description("#10 Test delete test case")
-//    public void testDeleteTestCase() {
-//        createProject(projectName, projectCode);
-//
-//        ProjectsPage projectsPage = new ProjectsPage(driver);
-//        projectsPage.reloadPage();
-//        projectsPage
-//                .clickRemoveOnActionMenuForSpecificProject(projectName)
-//                .clickConfirmDeleteProjectButton();
-//        assertTrue(projectsPage.isProjectWithSpecificNameInvisible(projectName), "Deleted project was found in projects list");
-//    }
+
+    @Test(testName = "#10 Test delete test case", description = "#10 Test delete test case")
+    @Description("#10 Test delete test case")
+    @Feature("Test-case")
+    @TmsLink("https://some-tms.com/test/10")
+    @Owner("Roman R")
+    public void testDeleteTestCase() {
+        createProject(projectName, projectCode);
+        createTestCase(projectCode, testCaseTitle, testCaseDescription, testCasePreConditions, testCasePostConditions);
+
+        ProjectsPage projectsPage = new ProjectsPage(driver);
+        projectsPage.reloadPage()
+                .clickOnSpecificProject(projectName)
+                .clickSpecificTestCase(testCaseTitle)
+                .clickDeleteTestCaseButton()
+                .clickConfirmDeleteTestCaseButton();
+        assertTrue(new ProjectPage(driver).isSpecificTestCaseInvisible(testCaseTitle), "Deleted test case was found in test cases list");
+
+        deleteProject(projectCode);
+    }
 }

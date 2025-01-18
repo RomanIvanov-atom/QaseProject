@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Quotes;
 import pages.base.BasePage;
+import pages.components.DeleteProjectModal;
 
 @Log4j2
 public class ProjectsPage extends BasePage<ProjectsPage> {
@@ -62,11 +63,11 @@ public class ProjectsPage extends BasePage<ProjectsPage> {
         return new ProjectSettingsPage(driver);
     }
 
-    public DeleteProjectPage clickRemoveOnActionMenuForSpecificProject(String projectName) {
+    public DeleteProjectModal clickRemoveOnActionMenuForSpecificProject(String projectName) {
         log.info("Click 'Remove' on action menu for '{}' project", projectName);
         clickOnSpecificActionMenu(projectName);
         clickRemoveOnActionMenu();
-        return new DeleteProjectPage(driver);
+        return new DeleteProjectModal(driver);
     }
 
     public ProjectPage clickOnSpecificProject(String projectName) {

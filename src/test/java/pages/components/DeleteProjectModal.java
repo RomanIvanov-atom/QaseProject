@@ -1,14 +1,15 @@
-package pages;
+package pages.components;
 
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
-import pages.base.BasePage;
+import pages.ProjectsPage;
+import pages.base.BaseElement;
 
 @Log4j2
-public class DeleteProjectPage extends BasePage {
-    public DeleteProjectPage(WebDriver driver) {
+public class DeleteProjectModal extends BaseElement {
+    public DeleteProjectModal(WebDriver driver) {
         super(driver);
-        pageLoading();
+        log.info("Opening delete project modal");
     }
 
     /* **************************************
@@ -21,16 +22,6 @@ public class DeleteProjectPage extends BasePage {
     /* **************************************
      *************** Methods ****************
      ****************************************/
-
-    @Override
-    protected void pageLoading() {
-        log.info("Loading Delete project modal");
-        try {
-            if (!(isVisible(CONFIRM_DELETE_BUTTON, 0, timeout))) throw new Exception();
-        } catch (Exception ex) {
-            throw new AssertionError("Delete project modal was not loaded");
-        }
-    }
 
     public ProjectsPage clickConfirmDeleteProjectButton() {
         log.info("Click 'Delete project' button");
