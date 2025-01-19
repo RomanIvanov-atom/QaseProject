@@ -15,7 +15,7 @@ import static api.adapters.ProjectAPI.createProject;
 import static api.adapters.ProjectAPI.deleteProject;
 import static api.adapters.TestCaseAPI.createTestCase;
 import static dto.testCase.TestCaseFactory.getFilledAccount;
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertTrue;
 import static utils.DataGenerator.generateRandomAlphaNumericUpperCaseString;
 
 @Log4j2
@@ -42,13 +42,13 @@ public class TestCasesPageTest extends BaseTest {
     public void testCreateTestCase() {
         createProject(projectName, projectCode);
 
-        ProjectsPage projectsPage = new ProjectsPage(driver);
-        projectsPage.reloadPage()
+        ProjectPage projectPage = new ProjectsPage(driver)
+                .reloadPage()
                 .clickOnSpecificProject(projectName)
-                .clickCreateTestCase()
+                .clickCreateTestCaseButton()
                 .fillAllTestCaseFields(getFilledAccount(testCaseTitle, testCaseDescription, testCasePreConditions, testCasePostConditions))
                 .clickSave();
-        assertTrue(new ProjectPage(driver).isSpecificTestCaseVisible(testCaseTitle), "Created test case wasn't found in test cases list");
+        assertTrue(projectPage.isSpecificTestCaseVisible(testCaseTitle), "Created test case wasn't found in test cases list");
 
         deleteProject(projectCode);
     }
@@ -68,8 +68,8 @@ public class TestCasesPageTest extends BaseTest {
         createProject(projectName, projectCode);
         createTestCase(projectCode, testCaseTitle, testCaseDescription, testCasePreConditions, testCasePostConditions);
 
-        ProjectsPage projectsPage = new ProjectsPage(driver);
-        projectsPage.reloadPage()
+        TestCasePage testCasePage = new ProjectsPage(driver)
+                .reloadPage()
                 .clickOnSpecificProject(projectName)
                 .clickSpecificTestCase(testCaseTitle)
                 .clickEditTestCaseButton()
@@ -79,14 +79,13 @@ public class TestCasesPageTest extends BaseTest {
                 .clickEditTestCaseButton();
 
         SoftAssert softAssert = new SoftAssert();
-        TestCasePage testCasePage = new TestCasePage(driver);
-        assertEquals(testCasePage.getTextFromSpecificInputField("Title"), testCaseTitleUpdated,
+        softAssert.assertEquals(testCasePage.getTextFromSpecificInputField("Title"), testCaseTitleUpdated,
                 "Title wasn't changed");
-        assertEquals(testCasePage.getTextFromSpecificTextAreaField("Description"), testCaseDescriptionUpdated,
+        softAssert.assertEquals(testCasePage.getTextFromSpecificTextAreaField("Description"), testCaseDescriptionUpdated,
                 "Description wasn't changed");
-        assertEquals(testCasePage.getTextFromSpecificTextAreaField("Pre-conditions"), testCasePreConditionsUpdated,
+        softAssert.assertEquals(testCasePage.getTextFromSpecificTextAreaField("Pre-conditions"), testCasePreConditionsUpdated,
                 "Pre-conditions wasn't changed");
-        assertEquals(testCasePage.getTextFromSpecificTextAreaField("Post-conditions"), testCasePostConditionsUpdated,
+        softAssert.assertEquals(testCasePage.getTextFromSpecificTextAreaField("Post-conditions"), testCasePostConditionsUpdated,
                 "Post-conditions wasn't changed");
         softAssert.assertAll();
 
@@ -102,13 +101,13 @@ public class TestCasesPageTest extends BaseTest {
         createProject(projectName, projectCode);
         createTestCase(projectCode, testCaseTitle, testCaseDescription, testCasePreConditions, testCasePostConditions);
 
-        ProjectsPage projectsPage = new ProjectsPage(driver);
-        projectsPage.reloadPage()
+        ProjectPage projectPage = new ProjectsPage(driver)
+                .reloadPage()
                 .clickOnSpecificProject(projectName)
                 .clickSpecificTestCase(testCaseTitle)
                 .clickDeleteTestCaseButton()
                 .clickConfirmDeleteTestCaseButton();
-        assertTrue(new ProjectPage(driver).isSpecificTestCaseInvisible(testCaseTitle), "Deleted test case was found in test cases list");
+        assertTrue(projectPage.isSpecificTestCaseInvisible(testCaseTitle), "Deleted test case was found in test cases list");
 
         deleteProject(projectCode);
     }

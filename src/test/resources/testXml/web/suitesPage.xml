@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suites page">
+    <test name="#11 Test create suite">
+        <classes>
+            <class name="tests.SuitesPageTest">
+                <methods>
+                    <include name="testCreateSuite"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="#12 Test update suite">
+        <classes>
+            <class name="tests.SuitesPageTest">
+                <methods>
+                    <include name="testUpdateSuite"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="#13 Test delete suite">
+        <classes>
+            <class name="tests.SuitesPageTest">
+                <methods>
+                    <include name="testDeleteSuite"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

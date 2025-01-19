@@ -71,8 +71,8 @@ public class ProjectsPage extends BasePage<ProjectsPage> {
     }
 
     public ProjectPage clickOnSpecificProject(String projectName) {
+        log.info("Click on project '{}'", projectName);
         click(String.format(SPECIFIC_PROJECT_NAME_IN_PROJECTS_LIST, Quotes.escape(projectName)));
-        waitForInvisibility(CREATE_NEW_PROJECT_BUTTON);
         return new ProjectPage(driver);
     }
 

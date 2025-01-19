@@ -32,8 +32,7 @@ public class ProjectsPageTest extends BaseTest {
     @TmsLink("https://some-tms.com/test/5")
     @Owner("Roman R")
     public void testCreateProject() {
-        ProjectsPage projectsPage = new ProjectsPage(driver);
-        projectsPage
+        ProjectsPage projectsPage = new ProjectsPage(driver)
                 .clickCreateProjectButton()
                 .createNewProject(projectName, projectCode)
                 .clickProjectsButtonOnHeader();
@@ -53,8 +52,8 @@ public class ProjectsPageTest extends BaseTest {
 
         createProject(projectName, projectCode);
 
-        ProjectsPage projectsPage = new ProjectsPage(driver);
-        projectsPage.reloadPage()
+        ProjectsPage projectsPage = new ProjectsPage(driver)
+                .reloadPage()
                 .clickSettingsOnActionMenuForSpecificProject(projectName)
                 .updateProject(projectNameUpdated, projectCodeUpdated)
                 .clickProjectsButtonOnHeader();
@@ -71,8 +70,8 @@ public class ProjectsPageTest extends BaseTest {
     public void testDeleteProject() {
         createProject(projectName, projectCode);
 
-        ProjectsPage projectsPage = new ProjectsPage(driver);
-        projectsPage.reloadPage()
+        ProjectsPage projectsPage = new ProjectsPage(driver)
+                .reloadPage()
                 .clickRemoveOnActionMenuForSpecificProject(projectName)
                 .clickConfirmDeleteProjectButton();
         assertTrue(projectsPage.isProjectWithSpecificNameInvisible(projectName), "Deleted project was found in projects list");

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import pages.base.BasePage;
 
 @Log4j2
-public class LoginPage extends BasePage {
+public class LoginPage extends BasePage<LoginPage> {
 
     public LoginPage(WebDriver driver) {
         super(driver);

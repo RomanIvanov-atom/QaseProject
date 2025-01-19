@@ -27,6 +27,8 @@ public class LoginPageTest extends BaseTest {
 
     @Test(testName = "#1 Test Login with a valid username and password")
     @Description("#1 Test Login with a valid username and password")
+    @Epic("EPIC-001 First quart")
+    @Story("ST-01 First story")
     @Feature("Login")
     @Severity(SeverityLevel.CRITICAL)
     @TmsLink("https://some-tms.com/test/1")
@@ -38,8 +40,7 @@ public class LoginPageTest extends BaseTest {
                 .fillUserName(Constants.USERNAME)
                 .fillPassword(Constants.PASSWORD)
                 .clickLoginButton();
-        ProjectsPage projectsPage = new ProjectsPage(driver);
-        assertTrue(projectsPage.isPageLoaded(), "Project Page was not loaded");
+        assertTrue(new ProjectsPage(driver).isPageLoaded(), "Project Page was not loaded");
     }
 
     @Test(testName = "#2 Test Login with a valid username and invalid password")
