@@ -35,10 +35,6 @@ public class LoginPage extends BasePage<LoginPage> {
         }
     }
 
-    public boolean isPageLoaded() {
-        return isVisible(LOGIN_BUTTON);
-    }
-
     public LoginPage fillUserName(String value) {
         log.info("Enter {} in username field", value);
         sendKeys(USERNAME_INPUT, value);
