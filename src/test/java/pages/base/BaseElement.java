@@ -99,14 +99,23 @@ public abstract class BaseElement {
         }
     }
 
+    /**
+     * Return element visibility state
+     */
     public boolean isVisible(String xpath, int index, int timeout) {
         return isElementVisible(driver, wrapXPathWithIndex(xpath, index), timeout);
     }
 
+    /**
+     * Return element visibility state
+     */
     public boolean isVisible(String xpath, int index) {
         return isVisible(xpath, index, short_timeout);
     }
 
+    /**
+     * Return element visibility state
+     */
     public boolean isVisible(String xpath) {
         return isVisible(xpath, 0, short_timeout);
     }
@@ -125,10 +134,16 @@ public abstract class BaseElement {
         }
     }
 
+    /**
+     * Return web element text
+     */
     public String getText(String xpath, int index) {
         return getText(xpath, index, short_timeout);
     }
 
+    /**
+     * Return web element text
+     */
     public String getText(String xpath) {
         return getText(xpath, 0, short_timeout);
     }
@@ -147,10 +162,16 @@ public abstract class BaseElement {
         }
     }
 
+    /**
+     * Get attribute of element
+     */
     public String getAttribute(String xpath, int index, String attribute) {
         return getAttribute(xpath, index, attribute, short_timeout);
     }
 
+    /**
+     * Get attribute of element
+     */
     public String getAttribute(String xpath, String attribute, int timeout) {
         return getAttribute(xpath, 0, attribute, timeout);
     }
@@ -171,10 +192,16 @@ public abstract class BaseElement {
         }
     }
 
+    /**
+     * Return input web element value
+     */
     public String getInputValue(String xpath, int index) {
         return getInputValue(xpath, index, short_timeout);
     }
 
+    /**
+     * Return input web element value
+     */
     public String getInputValue(String xpath) {
         return getInputValue(xpath, 0, short_timeout);
     }
@@ -193,10 +220,16 @@ public abstract class BaseElement {
         }
     }
 
+    /**
+     * Clear input element
+     */
     public void clearInput(String xpath, int index) {
         clearInput(xpath, index, short_timeout);
     }
 
+    /**
+     * Clear input element
+     */
     public void clearInput(String xpath) {
         clearInput(xpath, 0, short_timeout);
     }
@@ -224,10 +257,16 @@ public abstract class BaseElement {
         }
     }
 
+    /**
+     * Send keys element
+     */
     public void sendKeys(String xpath, int index, String value) {
         sendKeys(xpath, index, value, true, short_timeout);
     }
 
+    /**
+     * Send keys element
+     */
     public void sendKeys(String xpath, String value) {
         sendKeys(xpath, 0, value, true, short_timeout);
     }
@@ -241,19 +280,33 @@ public abstract class BaseElement {
         waitUntilElementIsVisible(By.xpath(wrapXPathWithIndex(xpath, index)), timeout);
     }
 
+    /**
+     * wait until element is visible
+     *
+     * @param index - zero-based indexing
+     */
     public void waitForVisibility(String xpath, int index) {
         waitForVisibility(xpath, index, short_timeout);
     }
 
+    /**
+     * wait until element is visible
+     */
     public void waitForVisibility(String xpath) {
         waitForVisibility(xpath, 0, short_timeout);
     }
 
+    /**
+     * wait until element is visible
+     */
     private void waitUntilElementIsVisible(By path, int timeout) {
         WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.visibilityOfElementLocated(path));
     }
 
+    /**
+     * wait until element is invisible
+     */
     private void waitUntilElementIsInvisible(By path, int seconds) {
         try {
             setImplicitWait(driver, 0);
@@ -279,10 +332,16 @@ public abstract class BaseElement {
         }
     }
 
+    /**
+     * wait until element is invisible
+     */
     public void waitForInvisibility(String xpath, int timeout) {
         waitForInvisibility(xpath, timeout, 1);
     }
 
+    /**
+     * wait until element is invisible
+     */
     public void waitForInvisibility(String xpath) {
         waitForInvisibility(xpath, short_timeout);
     }
@@ -328,10 +387,16 @@ public abstract class BaseElement {
         }
     }
 
+    /**
+     * Element centering
+     */
     public void scrollTo(String xpath, int index) {
         scrollTo(xpath, index, short_timeout);
     }
 
+    /**
+     * Element centering
+     */
     public void scrollTo(String xpath) {
         scrollTo(xpath, 0, short_timeout);
     }
@@ -357,14 +422,23 @@ public abstract class BaseElement {
         return findElements(By.xpath(xpath), timeout);
     }
 
+    /**
+     * Get Web elements list
+     */
     public List<WebElement> getWebElements(String xpath) {
         return getWebElements(xpath, short_timeout);
     }
 
+    /**
+     * Set implicit wait for driver
+     */
     private static void setImplicitWait(WebDriver driver, int seconds) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
     }
 
+    /**
+     * Get Web element (with by)
+     */
     private static WebElement findElement(WebDriver driver, By by, int timeout) {
         setImplicitWait(driver, 0);
         WebElement we = null;
@@ -381,14 +455,23 @@ public abstract class BaseElement {
         return we;
     }
 
+    /**
+     * Get Web element (with by)
+     */
     private WebElement findElement(By by, int timeout) {
         return findElement(this.driver, by, timeout);
     }
 
+    /**
+     * Get Web element (with by)
+     */
     private WebElement findElement(By by) {
         return findElement(by, short_timeout);
     }
 
+    /**
+     * Get Web elements (with by)
+     */
     private static List<WebElement> findElements(WebDriver driver, By by, int timeout) {
         setImplicitWait(driver, 0);
         List<WebElement> we = new ArrayList<>();
@@ -405,10 +488,16 @@ public abstract class BaseElement {
         return we;
     }
 
+    /**
+     * Get Web elements (with by)
+     */
     private List<WebElement> findElements(By by, int timeout) {
         return findElements(this.driver, by, timeout);
     }
 
+    /**
+     * Click on web element
+     */
     private List<WebElement> findElements(By by) {
         return findElements(by, short_timeout);
     }
@@ -427,10 +516,16 @@ public abstract class BaseElement {
         }
     }
 
+    /**
+     * Click on web element
+     */
     public void click(String xpath, int index) {
         click(xpath, index, short_timeout);
     }
 
+    /**
+     * Click on web element
+     */
     public void click(String xpath) {
         click(xpath, 0, short_timeout);
     }
