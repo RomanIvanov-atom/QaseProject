@@ -6,9 +6,12 @@ import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j2;
 
 import static io.restassured.RestAssured.given;
+import static org.apache.http.HttpStatus.*;
 
 @Log4j2
 public class ProjectAPI extends BaseAPI {
+
+    private static final String BASE_PROJECT_API = "/project";
 
     @Description("Create project through API")
     public static void createProject(String projectName, String projectCode) {
@@ -17,20 +20,13 @@ public class ProjectAPI extends BaseAPI {
                 .title(projectName)
                 .code(projectCode)
                 .build();
-        createPostRequest(createProjectBody, "/project", 200);
+        createPostRequest(createProjectBody, BASE_PROJECT_API, SC_OK);
     }
 
     @Description("Delete project through API")
     public static void deleteProject(String projectCode) {
-        log.info("Deleting project with code {} through API", projectCode);
-        given()
-                .baseUri(URL)
-                .spec(spec)
-                .when()
-                .delete("/project/{project_code}", projectCode)
-                .then()
-                .log().all()
-                .statusCode(200);
+        log.info("Deleting project with code '{}' through API", projectCode);
+        createDeleteRequest(BASE_PROJECT_API + "/" + projectCode, SC_OK);
     }
 
     public void getProject(String projectCode) {

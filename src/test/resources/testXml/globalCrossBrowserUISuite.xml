@@ -17,6 +17,7 @@
     <test name="Thread #2. Edge browser">
         <classes>
             <class name="tests.LoginPageTest"/>
+            <class name="tests.SuitesPageTest"/>
             <parameter name="browser" value="edge"/>
         </classes>
     </test>

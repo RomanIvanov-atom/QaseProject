@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import pages.base.BasePage;
 
 @Log4j2
-public class LoginPage extends BasePage {
+public class LoginPage extends BasePage<LoginPage> {
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -33,10 +33,6 @@ public class LoginPage extends BasePage {
         } catch (Exception ex) {
             throw new AssertionError("Login Page was not loaded");
         }
-    }
-
-    public boolean isPageLoaded() {
-        return isVisible(LOGIN_BUTTON);
     }
 
     public LoginPage fillUserName(String value) {

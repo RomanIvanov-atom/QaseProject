@@ -25,8 +25,10 @@ public class LoginPageTest extends BaseTest {
         driver.get(Constants.LOGIN_BASE_URL);
     }
 
-    @Test(testName = "#1 Test Login with a valid username and password")
+    @Test(testName = "#1 Test Login with a valid username and password", description = "#1 Test Login with a valid username and password")
     @Description("#1 Test Login with a valid username and password")
+    @Epic("EPIC-001 First quart")
+    @Story("ST-01 First story")
     @Feature("Login")
     @Severity(SeverityLevel.CRITICAL)
     @TmsLink("https://some-tms.com/test/1")
@@ -38,11 +40,11 @@ public class LoginPageTest extends BaseTest {
                 .fillUserName(Constants.USERNAME)
                 .fillPassword(Constants.PASSWORD)
                 .clickLoginButton();
-        ProjectsPage projectsPage = new ProjectsPage(driver);
-        assertTrue(projectsPage.isPageLoaded(), "Project Page was not loaded");
+        assertTrue(new ProjectsPage(driver).isPageLoaded(), "Project Page was not loaded");
     }
 
-    @Test(testName = "#2 Test Login with a valid username and invalid password")
+    @Test(testName = "#2 Test Login with a valid username and invalid password",
+            description = "#2 Test Login with a valid username and invalid password")
     @Description("#2 Test Login with a valid username and invalid password")
     @Feature("Login")
     @TmsLink("https://some-tms.com/test/2")
@@ -57,7 +59,8 @@ public class LoginPageTest extends BaseTest {
         assertTrue(loginPage.isInputErrorVisible(), "Message about wrong entered credentials isn't shown");
     }
 
-    @Test(testName = "#3 Test Login with invalid username and valid password")
+    @Test(testName = "#3 Test Login with invalid username and valid password",
+            description = "#3 Test Login with invalid username and valid password")
     @Description("#3 Test Login with invalid username and valid password")
     @Feature("Login")
     @TmsLink("https://some-tms.com/test/3")
@@ -72,7 +75,8 @@ public class LoginPageTest extends BaseTest {
         assertTrue(loginPage.isInputErrorVisible(), "Message about wrong entered credentials isn't shown");
     }
 
-    @Test(testName = "#4 Test Login with invalid username and invalid password")
+    @Test(testName = "#4 Test Login with invalid username and invalid password",
+            description = "#4 Test Login with invalid username and invalid password")
     @Description("#4 Test Login with invalid username and invalid password")
     @Feature("Login")
     @TmsLink("https://some-tms.com/test/4")

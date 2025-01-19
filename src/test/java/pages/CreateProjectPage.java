@@ -38,6 +38,7 @@ public class CreateProjectPage extends BasePage {
     }
 
     public ProjectPage createNewProject(String projectName, String projectCode) {
+        log.info("Creating new project with '{}' name and code '{}'", projectName, projectCode);
         new Input(driver, "Project name").write(projectName);
         new Input(driver, "Project code").write(projectCode);
         new RadioButton(driver, "Project access type").select("Public");

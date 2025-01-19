@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Projects page">
+<suite name="Test cases page">
     <test name="#8 Test create test case">
         <classes>
             <class name="tests.TestCasesPageTest">
@@ -16,6 +16,16 @@
             <class name="tests.TestCasesPageTest">
                 <methods>
                     <include name="testUpdateTestCase"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="#10 Test delete test case">
+        <classes>
+            <class name="tests.TestCasesPageTest">
+                <methods>
+                    <include name="testDeleteTestCase"/>
                 </methods>
             </class>
         </classes>
